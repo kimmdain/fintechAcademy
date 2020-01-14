@@ -100,7 +100,7 @@
 			alert(name + ' ' + ID + ' ' + password);
 			
             $.ajax({
-                url:'http://localhost:3001/Empuser',
+                url:'http://localhost:3000/empSignup',
                 type : 'POST',
                 data : {
                     entCode : enterpriseCode,
@@ -114,7 +114,7 @@
                 success:function(data){
                     if(data == 1){
                        alert("가입 완료");
-                       window.location = "/login"
+                       window.location = "/empLogin"
                     }
                 }
             })

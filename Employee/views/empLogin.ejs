@@ -103,7 +103,7 @@
             var password = $("#userPassword").val();
             
             $.ajax({
-                url:'http://localhost:3001/empLogin',
+                url:'http://localhost:3000/empLogin',
                 type : 'POST',
                 data : {  
                     entCode : entCode,  
@@ -116,7 +116,7 @@
                        alert("wrong password");
                     }
                     else{
-                        window.location = '/qrcode?entCode=' + data[0].enterpriseCode + '&ID=' + data[0].ID + '&name=' + data[0].name + '&balance=' + data[0].balance;
+                        window.location = '/empQrcode?entCode=' + data[0].enterpriseCode + '&ID=' + data[0].ID + '&name=' + data[0].name + '&balance=' + data[0].balance;
                     }
                 }
             })
