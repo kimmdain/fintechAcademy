@@ -39,6 +39,10 @@ app.get('/franMain', function(req, res){
     res.render('franMain');
 })
 
+app.get('/franQrReader', function(req, res){
+    res.render('franQrReader');
+})
+
 app.get('/main', function(req, res){
     res.render('main');
 })
