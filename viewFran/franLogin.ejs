@@ -48,15 +48,11 @@
 					<div class="form-row-group with-icons">
                         <div class="form-row no-padding">
 							<i class="fa fa-envelope"></i>
-							<input type="text" id="entCode" class="form-element" placeholder="EnterpriseCode">
-						</div>
-                        <div class="form-row no-padding">
-							<i class="fa fa-envelope"></i>
-							<input type="text" id="userID" class="form-element" placeholder="UserID">
+							<input type="text" id="franId" class="form-element" placeholder="UserID">
 						</div>
 						<div class="form-row no-padding">
 							<i class="fa fa-lock"></i>
-							<input type="password" id="userPassword" class="form-element" placeholder="Password">
+							<input type="password" id="franPw" class="form-element" placeholder="Password">
 						</div>
 					</div>
 
@@ -71,7 +67,7 @@
 					</div>
 
 					<div class="form-row txt-center mt-15">
-						Don't you have an account yet? <a href="signup.ejs" data-loader="show">Sign Up</a>
+						Don't you have an account yet? <a href="franSignup" data-loader="show">Sign Up</a>
 					</div>
 
 				</div>
@@ -98,17 +94,15 @@
 
     <script>
         $("#loginBtn").click(function(){
-            var entCode = $("#entCode").val();
-            var ID = $("#userID").val();
-            var password = $("#userPassword").val();
+            var ID = $("#franId").val();
+            var password = $("#franPw").val();
             
             $.ajax({
-                url:'http://localhost:3001/login',
+                url:'http://localhost:3002/franLogin',
                 type : 'POST',
-                data : {  
-                    entCode : entCode,  
-                    ID : ID,                
-                    password : password              
+                data : {
+                    franId : ID,                
+                    franPw : password              
                 },
 
                 success:function(data){
@@ -119,7 +113,7 @@
 						alert("no approved");
 					}
                     else{
-                        window.location = '/qrcode?entCode=' + data[0].enterpriseCode + '&ID=' + data[0].ID + '&name=' + data[0].name + '&balance=' + data[0].balance;
+                        window.location = "/franMain";
                     }
                 }
             })
