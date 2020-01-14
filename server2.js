@@ -10,7 +10,7 @@ var port = process.env.PORT || 3001;
 // 이게 없으면 보여주고 싶은 정보들(이미지, 코드)이 그 자체가 아니라 경로, 코드로 보여짐.
 app.use(express.static(__dirname + '/public')); 
 
-app.set('views', __dirname + '/finProject');
+app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.use(express.json());
