@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+	<title>Crypto Mobile Template</title>
+
+	<!-- Google font file. If you want you can change. -->
+	<link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,900" rel="stylesheet">
+
+	<!-- Fontawesome font file css -->
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+
+	<!-- Template global css file. Requared all pages -->
+	<link rel="stylesheet" type="text/css" href="css/global.style.css">
+</head>
+
+<body>
+	
+	<div class="wrapper">
+		<div class="nav-menu">
+			<nav class="menu">				
+				<!-- Menu navigation start -->				
+			<!-- Menu navigation end -->
+			</nav>
+		</div>
+		<div class="wrapper-inline">
+			<!-- Header area start -->
+			<header> <!-- extra class no-background -->
+				<a class="go-back-link" href="javascript:history.back();"><i class="fa fa-arrow-left"></i></a>
+				<h1 class="page-title">LOGIN</h1>
+				<div class="navi-menu-button">
+					<em></em>
+					<em></em>
+					<em></em>
+				</div>
+			</header>
+			<!-- Header area end -->
+			<!-- Page content start -->
+			<main>
+			
+				<div class="container">
+					<div class="form-divider"></div>
+					<div class="form-divider"></div>					
+					<div class="form-divider"></div>
+
+					<div class="form-row-group with-icons">
+                        <div class="form-row no-padding">
+							<i class="fa fa-envelope"></i>
+							<input type="text" id="entCode" class="form-element" placeholder="EnterpriseCode">
+						</div>
+                        <div class="form-row no-padding">
+							<i class="fa fa-envelope"></i>
+							<input type="text" id="userID" class="form-element" placeholder="UserID">
+						</div>
+						<div class="form-row no-padding">
+							<i class="fa fa-lock"></i>
+							<input type="password" id="userPassword" class="form-element" placeholder="Password">
+						</div>
+					</div>
+
+					<div class="form-row txt-center mt-15">
+						<a href="forgot-password.html" data-loader="show">Forgot password?</a>
+					</div>
+
+					<div class="form-divider"></div>
+
+					<div class="form-row">
+						<button type="button" id="loginBtn" class="button circle block orange">Login</button>
+					</div>
+
+					<div class="form-row txt-center mt-15">
+						Don't you have an account yet? <a href="signup.ejs" data-loader="show">Sign Up</a>
+					</div>
+
+				</div>
+			</main>
+			<!-- Page content end -->
+		</div>
+	</div>
+
+
+	<!--Page loader DOM Elements. Requared all pages-->
+	<div class="sweet-loader">
+		<div class="box">
+		  	<div class="circle1"></div>
+		  	<div class="circle2"></div>
+		  	<div class="circle3"></div>
+		</div>
+	</div>
+
+	<!-- JQuery library file. requared all pages -->
+	<script src="js/jquery-3.2.1.min.js"></script>
+
+	<!-- Template global script file. requared all pages -->
+	<script src="js/global.script.js"></script>
+
+    <script>
+        $("#loginBtn").click(function(){
+            var entCode = $("#entCode").val();
+            var ID = $("#userID").val();
+            var password = $("#userPassword").val();
+            
+            $.ajax({
+                url:'http://localhost:3001/login',
+                type : 'POST',
+                data : {  
+                    entCode : entCode,  
+                    ID : ID,                
+                    password : password              
+                },
+
+                success:function(data){
+                    if(data == 0){
+                       alert("wrong password");
+                    }
+                    else{
+                        window.location = '/qrcode?entCode=' + data[0].enterpriseCode + '&ID=' + data[0].ID + '&name=' + data[0].name + '&balance=' + data[0].balance;
+                    }
+                }
+            })
+        });
+    </script>
+	
+</body>
+
+</html>
