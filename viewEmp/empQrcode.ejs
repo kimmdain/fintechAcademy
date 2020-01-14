@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+​
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+	<title>Crypto Mobile Template</title>
+​
+	<!-- Google font file. If you want you can change. -->
+	<link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,900" rel="stylesheet">
+​
+	<!-- Fontawesome font file css -->
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+​
+	<!-- Template global css file. Requared all pages -->
+	<link rel="stylesheet" type="text/css" href="css/global.style.css">
+</head>
+​
+<body>
+	
+	<div class="wrapper">
+		<div class="nav-menu">
+			<nav class="menu">				
+				<!-- Menu navigation start -->				
+			    <!-- Menu navigation end -->
+			</nav>
+		</div>
+		<div class="wrapper-inline">
+			<!-- Header area start -->
+			<header> <!-- extra class no-background -->
+				<a class="go-back-link" href="javascript:history.back();"><i class="fa fa-arrow-left"></i></a>
+				<h1 class="page-title">BLANK</h1>
+				<div class="navi-menu-button">
+					<em></em>
+					<em></em>
+					<em></em>
+				</div>
+			</header>
+			<!-- Header area end -->
+			<!-- Page content start -->
+			<main>
+				<div class="container">
+                    <div id="qrcode"></div>
+					<div id="balance"></div>					
+				</div>
+​
+				<div class="form-divider"></div>
+​
+				<footer>
+					<div class="container">
+						<ul>
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-google"></i></a></li>
+							<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+						</ul>
+						<p>Copyright © All Right Reserved</p>
+					</div>
+				</footer>
+​
+			</main>
+			<!-- Page content end -->
+		</div>
+	</div>
+​
+​
+	<!--Page loader DOM Elements. Requared all pages-->
+	<div class="sweet-loader">
+		<div class="box">
+		  	<div class="circle1"></div>
+		  	<div class="circle2"></div>
+		  	<div class="circle3"></div>
+		</div>
+	</div>
+	<!-- JQuery library file. requared all pages -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/qrcode.js"></script>
+	<!-- Template global script file. requared all pages -->
+	<script src="js/global.script.js"></script>
+	<script>
+	function getQueryStringObject() {
+    var a = window.location.search.substr(1).split('&');
+    if (a == "") return {};
+    var b = {};
+    for (var i = 0; i < a.length; ++i) {
+        var p = a[i].split('=', 2);
+        if (p.length == 1)
+            b[p[0]] = "";
+        else
+            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+    }
+    return b;
+	}
+	var qs = getQueryStringObject();
+	
+	if (qs.balance <= 5000){
+		alert("잔액이 5000원 이하입니다.");
+	}
+	else {
+		new QRCode(document.getElementById("qrcode"), qs.ID + "," + qs.entCode);
+	
+		$("#balance").html('이름 : ' + qs.name + '<br /> 잔액 : ' + qs.balance);
+	}
+
+	
+
+	</script>
+	
+</body>
+​
+​
+</html>
