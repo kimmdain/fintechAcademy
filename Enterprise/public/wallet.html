@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+	<title>Crypto Mobile Template</title>
+
+	<!-- Google font file. If you want you can change. -->
+	<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,900" rel="stylesheet">
+
+	<!-- Fontawesome font file css -->
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+
+	<!-- Animate css file for css3 animations. for more : https://daneden.github.io/animate.css -->
+	<!-- Only use animate action. If you dont use animation, you don't have to add.-->
+	<link rel="stylesheet" type="text/css" href="css/animate.css">
+	<link rel="stylesheet" type="text/css" href="css/cryptocoins.css">
+	<link rel="stylesheet" type="text/css" href="plugins/c3-chart/c3.css">
+
+	<!-- Template global css file. Requared all pages -->
+	<link rel="stylesheet" type="text/css" href="css/global.style.css">
+
+	<!-- Swiper slider css file -->
+	<link rel="stylesheet" href="css/swiper.min.css">
+
+	<!--turbo slider plugin css file -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="plugins/turbo-slider/turbo.css">
+
+</head>
+
+<body>
+	
+	<div class="wrapper ">
+		<div class="nav-menu">
+			<nav class="menu">
+				
+				<!-- Menu navigation start -->
+				<div class="nav-container">
+					<ul class="main-menu">
+						<li class="">
+							<a href="index.html"><img src="img/content/icons/1.png" alt=""><strong class="special">Dashboard</strong> </a>
+						</li>
+						<li class="active">
+							<a href="wallet.html"><img src="img/content/icons/2.png" alt=""><strong class="special">My Walet</strong> </a>
+						</li>
+						<li class="">
+							<a href="trading.html"><img src="img/content/icons/3.png" alt=""><strong class="special">Crypto Trade</strong> </a>
+						</li>
+						<li class="">
+							<a href="buy-sell.html"><img src="img/content/icons/6.png" alt=""><strong class="special">Buy & sell</strong> </a>
+						</li>
+						<li class="">
+							<a href="profile.html"><img src="img/content/icons/5.png" alt=""><strong class="special">Trader Profile</strong> </a>
+						</li>
+						<li class="">
+							<a href="affiliate.html"><img src="img/content/icons/4.png" alt=""><strong class="special">Affiliate System</strong> </a>
+						</li>
+						<li class="">
+							<a href="setting.html"><img src="img/content/icons/11.png" alt=""><strong class="special">Settings</strong> </a>
+						</li>
+						<li>
+							<a href="javascript:void(0);"><img src="img/content/icons/9.png" alt=""><strong class="special">Login/Register</strong> <span class="fa fa-angle-down"></span></a>
+							<ul>
+								<li><a href="login.html" data-loader="show">Login</a></li>
+								<li><a href="signup.html" data-loader="show">Register</a></li>
+								<li><a href="forgot-password.html" data-loader="show">Forgot Password</a></li>
+							</ul>
+						</li>
+						
+						<li>
+							<a href="javascript:void(0);"><img src="img/content/icons/8.png" alt=""> <strong class="special">Wizards</strong> <span class="fa fa-angle-down"></span></a>
+							<ul>
+								<li><a href="wizard-default.html" data-loader="show">Wizard Default</a></li>
+								<li><a href="wizard-fullscreen.html" data-loader="show">Wizard Fullscreen</a></li>
+							</ul>
+						</li>
+						<li class="">
+							<a href="charts.html"><img src="img/content/icons/14.png" alt=""><strong class="special">Charts</strong> </a>
+						</li>
+						<li>
+							<a href="forms.html" data-loader="show"><img src="img/content/icons/7.png" alt=""><strong class="special">Form Elements</strong></a>
+						</li>
+						<li>
+							<a href="#"><img src="img/content/icons/10.png" alt=""><strong class="special"> Components</strong> <span class="fa fa-angle-down"></span></a>
+							<ul>
+								<li><a href="tab-bottom.html" data-loader="show">Tab (Bottom)</a></li>
+								<li><a href="tab-top.html" data-loader="show">Tab (Top)</a></li>
+								<li><a href="accordion.html" data-loader="show">Accordion</a></li>
+								<li><a href="popup.html" data-loader="show">Popup Modal</a></li>
+								<li><a href="checkbox-list.html" data-loader="show">Check List</a></li>
+								<li><a href="link-list.html" data-loader="show">Link List</a></li>
+								<li><a href="link-list-two-column.html" data-loader="show">Two Column Links</a></li>
+							</ul>
+						</li>
+						<li class="">
+							<a href="#"><img src="img/content/icons/15.png" alt=""><strong class="special"> Pages</strong> <span class="fa fa-angle-down"></span></a>
+							<ul>
+								<li class=""><a href="profile.html" data-loader="show">User Profile</a></li>
+								<li><a href="search-result.html" data-loader="show">Search Results</a></li>
+								<li><a href="contact.html" data-loader="show">Contact</a></li>
+								<li><a href="blank.html" data-loader="show">Blank Page</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			<!-- Menu navigation end -->
+			</nav>
+		</div>
+		<div class="wrapper-inline">
+			<!-- Header area start -->
+			<header class="no-background"> <!-- extra class no-background -->
+
+				<a class="go-back-link" href="javascript:history.back();"><i class="fa fa-arrow-left"></i></a>
+				<div class="search-button" data-search="open">
+					<img src="img/content/notification1.png" class="not-icon1" alt="">
+					<img src="img/content/notification2.png" class="not-icon2" alt="">
+				</div>
+
+				<div class="navi-menu-button">
+					<em></em>
+					<em></em>
+					<em></em>
+				</div>
+
+			</header>
+			<!-- Header area end -->
+
+			<!--NOTIFICATION BOX CONTENT START-->
+			<div class="search-form">
+				<span class="close-search-form" data-search="close"><i class="fa fa-times"></i> </span>
+				<form>
+					<div class="search-input">
+						<input type="text" name="q" class="form-element" placeholder="Search...">
+						<button type="submit" class="search-input-btn"><i class="fa fa-arrow-right"></i></button>
+					</div>
+				</form>
+			    <ul class="notification-list list-unstyled">
+					<li>
+						<div class="d-flex align-items-center justify-content-between">
+                          <div class="d-flex align-items-center">
+                            <div class="">
+                              <h5 class="coin-name">You have 3 notifications</h5>
+                            </div>
+                          </div>
+                          <div>
+                            <a href=""><small class="text-muted d-block">mark all as read</small></a>
+                          </div>
+                        </div>
+					</li>
+					<li>
+						<div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+	                            <div class="notice-icon available">
+	                                <i class="fa fa-check"></i>
+	                            </div>
+	                            <div class="ml-10">
+	                              <h4 class="coin-name">Successful transaction 0.01 BTC</h4>
+	                              <small class="text-muted">15 min ago</small>
+	                            </div>
+                            </div>
+                        </div>
+					</li>
+					<li>
+						<div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+	                            <div class="notice-icon away">
+	                                <i class="fa fa-clock-o"></i>
+	                            </div>
+	                            <div class="ml-10">
+	                              <h4 class="coin-name">4 of Pending Transactions!</h4>
+	                              <small class="text-muted"> 12 hours ago</small>
+	                            </div>
+                            </div>
+                        </div>
+					</li>
+					<li>
+						<div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+	                            <div class="notice-icon busy">
+	                                <i class="fa fa-times"></i>
+	                            </div>
+	                            <div class="ml-10">
+	                              <h4 class="coin-name">Cancelled Order of 200 ICO</h4>
+	                              <small class="text-muted">15 Feb - 08:34</small>
+	                            </div>
+                            </div>
+                        </div>
+					</li>
+					<li>
+						<div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+	                            <div class="notice-icon available">
+	                                <i class="fa fa-check"></i>
+	                            </div>
+	                            <div class="ml-10">
+	                              <h4 class="coin-name">Great Speed Notify of 1.34 LTC</h4>
+	                              <small class="text-muted">24 jan - 20:43</small>
+	                            </div>
+                            </div>
+                        </div>
+					</li>
+					<li>
+						<div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+	                            <a href="" class="text-muted">Read all notifications</a>
+                            </div>
+                        </div>
+					</li>
+					
+				</ul>
+			</div>
+			<!--NOTIFICATION BOX CONTENT END-->
+
+			<!-- Page content start -->
+			<main class="margin mt-0">
+
+				<div class="dash-balance">
+					<div class="dash-content relative">
+						<h3 class="w-text">My Wallet</h3>
+						<div class="notification">
+							<a href=""><i class="fa fa-plus"></i></a>
+						</div>
+					</div>
+				</div>
+
+				<section class="bal-section container">
+					
+					<div class="resources-card-wrapper">
+		    			<div class="wallet-card mr-10 round">
+	                        <div class="flex-column flex-md-row">
+	                          <i class="c-icon cc BTC"></i>
+	                          <h3 class="w-text">Bitcoin Wallet</h3>
+	                          <p class="g-text mb-0 font-weight-medium"><i class="txt-green fa fa-arrow-up mr-10"></i>0.8224 BTc </p>
+	                        </div>
+	                    </div>
+						
+	                    <div class="wallet-card ml-10 purp">
+	                        <div class="flex-column flex-md-row">
+	                          <i class="c-icon cc ETH"></i>
+	                          <h3 class="w-text">Etherum Wallet</h3>
+	                          <p class="g-text mb-0 font-weight-medium"><i class="txt-red fa fa-arrow-down mr-10"></i>1.2629 ETH </p>
+	                        </div>
+	                    </div>
+					</div>
+					<div class="resources-card-wrapper mt-15">
+		    			<div class="wallet-card mr-10 hot">
+	                        <div class="flex-column flex-md-row">
+	                          <i class="c-icon cc XRP"></i>
+	                          <h3 class="w-text">Ripple Wallet</h3>
+	                          <p class="g-text mb-0 font-weight-medium"><i class="txt-red fa fa-arrow-down mr-10"></i>8,954.3 XRP </p>
+	                        </div>
+	                    </div>
+						
+	                    <div class="wallet-card ml-10 app">
+	                        <div class="flex-column flex-md-row">
+	                          <i class="c-icon cc DASH"></i>
+	                          <h3 class="w-text">Dashcoin Wallet</h3>
+	                          <p class="g-text mb-0 font-weight-medium"><i class="txt-green fa fa-arrow-up mr-10"></i>1.269 DASH </p>
+	                        </div>
+	                    </div>
+					</div>
+				</section>
+
+				<section class="wallets-list container">
+					<h4 class="title-main">Cryptocoins Wallets</h4>
+					<!--expendable list item -->
+					<div class="expandable-item accordion active" data-group="accordion1">
+						<div class="expandable-header purp">
+							<i class="cc BTC-alt"></i>
+							<h3 class="list-title">Bitcoin Wallet</h3>
+							<i class="list-arrow fa fa-angle-down"></i>
+						</div>
+						<div class="expandable-content">
+							<div class="padding-content">
+								<h4>Recent Bitcoin Transactions</h4>
+								<div class="recent-trans">
+                                    <ul class="dropdown-menu-list list-unstyled no-mb">
+                                        <li>
+                                            <div class="notice-icon">
+                                                <i class="fa fa-institution"></i>
+                                            </div>
+                                            <div>
+                                                <span class="name">
+                                                    <strong>Recieved Amount</strong>
+                                                    <span class="time small">+ 3.39498 BTC</span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="notice-icon">
+                                                <i class="fa fa-credit-card"></i>
+                                            </div>
+                                            <div>
+                                                <span class="name">
+                                                    <strong>Sent Amount</strong>
+                                                    <span class="time small">- 0.81729 BTC</span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="notice-icon">
+                                                <i class="fa fa-check"></i>
+                                            </div>
+                                            <div>
+                                                <span class="name">
+                                                    <strong>Recieved Amount</strong>
+                                                    <span class="time small">+ 548,485.44 BTC</span>
+                                                </span>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="wallet-address">
+                                	<h4 class="w-text mt-0">Bitcoin Wallet Address</h4>
+                                	<div class="form-row-group with-icons">
+										<div class="form-row no-padding">
+											<i class="cc BTC text-muted"></i>
+											<input type="text" name="aaa" class="form-element" value="XAHS-AKDLAD4523AAI">
+										</div>
+									</div>
+									<img src="img/content/qr.png" alt="" class="mt-15">
+									<h4>This is your Wallet ID</h4>
+									<p class="g-text mb-0">Scan This crediential to send or exchange crypto assets with just scaning this code</p>
+                                </div>
+							</div>
+						</div>
+					</div>
+					<!--expendable list item -->
+
+					<!--expendable list item -->
+					<div class="expandable-item accordion" data-group="accordion1">
+						<div class="expandable-header purp">
+							<i class="cc ETH-alt"></i>
+							<h3 class="list-title">Ethereum Wallet</h3>
+							<i class="list-arrow fa fa-angle-down"></i>
+						</div>
+						<div class="expandable-content">
+							<div class="padding-content">
+								<h4>Recent Ethereum Transactions</h4>
+								<div class="recent-trans">
+                                    <ul class="dropdown-menu-list list-unstyled no-mb">
+                                        <li>
+                                            <div class="notice-icon">
+                                                <i class="fa fa-institution"></i>
+                                            </div>
+                                            <div>
+                                                <span class="name">
+                                                    <strong>Recieved Amount</strong>
+                                                    <span class="time small">+ 3.39498 ETH</span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="notice-icon">
+                                                <i class="fa fa-credit-card"></i>
+                                            </div>
+                                            <div>
+                                                <span class="name">
+                                                    <strong>Sent Amount</strong>
+                                                    <span class="time small">- 0.81729 ETH</span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="notice-icon">
+                                                <i class="fa fa-check"></i>
+                                            </div>
+                                            <div>
+                                                <span class="name">
+                                                    <strong>Recieved Amount</strong>
+                                                    <span class="time small">+ BTC8,485.44 ETH</span>
+                                                </span>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="wallet-address">
+                                	<h4 class="w-text mt-0">Ethereum Wallet Address</h4>
+                                	<div class="form-row-group with-icons">
+										<div class="form-row no-padding">
+											<i class="cc ETH text-muted"></i>
+											<input type="text" name="aaa" class="form-element" value="XAHS-AKDLAD4523AAI">
+										</div>
+									</div>
+									<img src="img/content/qr.png" alt="" class="mt-15">
+									<h4>This is your Wallet ID</h4>
+									<p class="g-text mb-0">Scan This crediential to send or exchange crypto assets with just scaning this code</p>
+                                </div>
+							</div>
+						</div>
+					</div>
+					<!--expendable list item -->
+
+					<!--expendable list item -->
+					<div class="expandable-item accordion" data-group="accordion1">
+						<div class="expandable-header purp">
+							<i class="cc LTC-alt"></i>
+							<h3 class="list-title">Litecoin Wallet</h3>
+							<i class="list-arrow fa fa-angle-down"></i>
+						</div>
+						<div class="expandable-content">
+							<div class="padding-content">
+								<h4>Recent Litecoin Transactions</h4>
+								<div class="recent-trans">
+                                    <ul class="dropdown-menu-list list-unstyled no-mb">
+                                        <li>
+                                            <div class="notice-icon">
+                                                <i class="fa fa-institution"></i>
+                                            </div>
+                                            <div>
+                                                <span class="name">
+                                                    <strong>Recieved Amount</strong>
+                                                    <span class="time small">+ 3.39498 LTC</span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="notice-icon">
+                                                <i class="fa fa-credit-card"></i>
+                                            </div>
+                                            <div>
+                                                <span class="name">
+                                                    <strong>Sent Amount</strong>
+                                                    <span class="time small">- 0.81729 LTC</span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="notice-icon">
+                                                <i class="fa fa-check"></i>
+                                            </div>
+                                            <div>
+                                                <span class="name">
+                                                    <strong>Recieved Amount</strong>
+                                                    <span class="time small">+ BTC8,485.44 LTC</span>
+                                                </span>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="wallet-address">
+                                	<h4 class="w-text mt-0">Litecoin Wallet Address</h4>
+                                	<div class="form-row-group with-icons">
+										<div class="form-row no-padding">
+											<i class="cc LTC text-muted"></i>
+											<input type="text" name="aaa" class="form-element" value="XAHS-AKDLAD4523AAI">
+										</div>
+									</div>
+									<img src="img/content/qr.png" alt="" class="mt-15">
+									<h4>This is your Wallet ID</h4>
+									<p class="g-text mb-0">Scan This crediential to send or exchange crypto assets with just scaning this code</p>
+                                </div>
+							</div>
+						</div>
+					</div>
+					<!--expendable list item -->
+				</section>
+
+			    <section class="container">
+			    	<div class="resources-card-wrapper mt-15">
+		    			<a href="buy-sell.html" class="buy-card mr-10">
+	                        <div class="flex-column flex-md-row">
+	                          <img src="img/content/p1.png" alt="">
+	                          <h4>Buy crypto</h4>
+	                          <p class="g-text mb-0 font-weight-medium">Lorem ipsum dolr sit amet alias iure. </p>
+	                        </div>
+	                    </a>
+						
+	                    <a href="buy-sell.html" class="buy-card ml-10">
+	                        <div class="flex-column flex-md-row">
+	                          <img src="img/content/p2.png" alt="">
+	                          <h4>Sell crypto</h4>
+	                          <p class="g-text mb-0 font-weight-medium">Lorem ipsum dolr sit amet alias iure. </p>
+	                        </div>
+	                    </a>
+	                    
+					</div>
+			    </section>
+
+			   
+				<section class="container">
+					<h4 class="title-main">Recent Transactions</h4>
+					<ul class="transaction-list list-unstyled">
+						<li>
+							<div class="d-flex align-items-center justify-content-between">
+	                          <div class="d-flex align-items-center">
+	                            <img class="img-xs" src="img/content/coin1.png" alt="coin image">
+	                            <div class="ml-10">
+	                              <h4 class="coin-name">Bitcoin</h4>
+	                              <small class="text-muted">08-24 <span class="ml-10">20.04PM</span></small>
+	                            </div>
+	                          </div>
+	                          <div>
+	                            <small class="d-block mb-0 txt-green">+0.94853</small>
+	                            <small class="text-muted d-block">$2,748.94</small>
+	                          </div>
+	                        </div>
+						</li>
+						<li>
+							<div class="d-flex align-items-center justify-content-between">
+	                          <div class="d-flex align-items-center">
+	                            <img class="img-xs" src="img/content/coin2.png" alt="coin image">
+	                            <div class="ml-10">
+	                              <h4 class="coin-name">Ethereum</h4>
+	                              <small class="text-muted">08-24 <span class="ml-10">20.04PM</span></small>
+	                            </div>
+	                          </div>
+	                          <div>
+	                            <small class="d-block mb-0 txt-green">+1.84993</small>
+	                            <small class="text-muted d-block">$3,748.94</small>
+	                          </div>
+	                        </div>
+						</li>
+						<li>
+							<div class="d-flex align-items-center justify-content-between">
+	                          <div class="d-flex align-items-center">
+	                            <img class="img-xs" src="img/content/coin3.png" alt="coin image">
+	                            <div class="ml-10">
+	                              <h4 class="coin-name">Dashcoin</h4>
+	                              <small class="text-muted">08-24 <span class="ml-10">20.04PM</span></small>
+	                            </div>
+	                          </div>
+	                          <div>
+	                            <small class="d-block mb-0 txt-red">-23.84523</small>
+	                            <small class="text-muted d-block">$1,493.03</small>
+	                          </div>
+	                        </div>
+						</li>
+						<li>
+							<div class="d-flex align-items-center justify-content-between">
+	                          <div class="d-flex align-items-center">
+	                            <img class="img-xs" src="img/content/coin4.png" alt="coin image">
+	                            <div class="ml-10">
+	                              <h4 class="coin-name">Ripple</h4>
+	                              <small class="text-muted">08-24 <span class="ml-10">20.04PM</span></small>
+	                            </div>
+	                          </div>
+	                          <div>
+	                            <small class="d-block mb-0 txt-green">+500.347</small>
+	                            <small class="text-muted d-block">$239.94</small>
+	                          </div>
+	                        </div>
+						</li>
+					</ul>
+				</section>
+
+				<footer>
+					<div class="container">
+						<ul>
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-google"></i></a></li>
+							<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+						</ul>
+						<p>Copyright © All Right Reserved</p>
+					</div>
+				</footer>
+			</main>
+			<!-- Page content end -->
+		</div>
+	</div>
+
+	<!--Page loader DOM Elements. Requared all pages-->
+	<div class="sweet-loader">
+		<div class="box">
+		  	<div class="circle1"></div>
+		  	<div class="circle2"></div>
+		  	<div class="circle3"></div>
+		</div>
+	</div>
+
+	<!-- JQuery library file. requared all pages -->
+	<script src="js/jquery-3.2.1.min.js"></script>
+
+	<!-- Swiper JS -->
+    <script src="js/swiper.min.js"></script>
+
+	<!-- Template global script file. requared all pages -->
+	<script src="js/app-charts.js"></script>
+	<script src="js/global.script.js"></script>
+
+
+
+</body>
+
+</html>

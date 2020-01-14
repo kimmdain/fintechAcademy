@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+	<title>Crypto Mobile Template</title>
+
+	<!-- Google font file. If you want you can change. -->
+	<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,900" rel="stylesheet">
+
+	<!-- Fontawesome font file css -->
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+
+	<!-- Animate css file for css3 animations. for more : https://daneden.github.io/animate.css -->
+	<!-- Only use animate action. If you dont use animation, you don't have to add.-->
+	<link rel="stylesheet" type="text/css" href="css/animate.css">
+	<link rel="stylesheet" type="text/css" href="css/cryptocoins.css">
+	<link rel="stylesheet" type="text/css" href="plugins/c3-chart/c3.css">
+
+	<!-- Template global css file. Requared all pages -->
+	<link rel="stylesheet" type="text/css" href="css/global.style.css">
+
+	<!-- Swiper slider css file -->
+	<link rel="stylesheet" href="css/swiper.min.css">
+
+	<!--turbo slider plugin css file -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="plugins/turbo-slider/turbo.css">
+
+</head>
+
+<body>
+	
+	<div class="wrapper ">
+		<div class="nav-menu">
+			<nav class="menu">
+				
+				<!-- Menu navigation start -->
+				<div class="nav-container">
+					<ul class="main-menu">
+						<li class="">
+							<a href="index.html"><img src="img/content/icons/1.png" alt=""><strong>Dashboard</strong> </a>
+						</li>
+						<li class="">
+							<a href="wallet.html"><img src="img/content/icons/2.png" alt=""><strong>My Walet</strong> </a>
+						</li>
+						<li class="">
+							<a href="trading.html"><img src="img/content/icons/3.png" alt=""><strong>Crypto Trade</strong> </a>
+						</li>
+						<li class="">
+							<a href="buy-sell.html"><img src="img/content/icons/6.png" alt=""><strong>Buy & sell</strong> </a>
+						</li>
+						<li class="">
+							<a href="profile.html"><img src="img/content/icons/5.png" alt=""><strong>Trader Profile</strong> </a>
+						</li>
+						<li class="">
+							<a href="affiliate.html"><img src="img/content/icons/4.png" alt=""><strong>Affiliate System</strong> </a>
+						</li>
+						<li class="">
+							<a href="setting.html"><img src="img/content/icons/11.png" alt=""><strong>Settings</strong> </a>
+						</li>
+						<li>
+							<a href="javascript:void(0);"><img src="img/content/icons/9.png" alt=""><strong>Login/Register</strong> <span class="fa fa-angle-down"></span></a>
+							<ul>
+								<li><a href="login.html" data-loader="show">Login</a></li>
+								<li><a href="signup.html" data-loader="show">Register</a></li>
+								<li><a href="forgot-password.html" data-loader="show">Forgot Password</a></li>
+							</ul>
+						</li>
+						
+						<li>
+							<a href="javascript:void(0);"><img src="img/content/icons/8.png" alt=""> <strong>Wizards</strong> <span class="fa fa-angle-down"></span></a>
+							<ul>
+								<li><a href="wizard-default.html" data-loader="show">Wizard Default</a></li>
+								<li><a href="wizard-fullscreen.html" data-loader="show">Wizard Fullscreen</a></li>
+							</ul>
+						</li>
+						<li class="active">
+							<a href="charts.html"><img src="img/content/icons/14.png" alt=""><strong>Charts</strong> </a>
+						</li>
+						<li>
+							<a href="forms.html" data-loader="show"><img src="img/content/icons/7.png" alt=""><strong>Form Elements</strong></a>
+						</li>
+						<li>
+							<a href="#"><img src="img/content/icons/10.png" alt=""><strong> Components</strong> <span class="fa fa-angle-down"></span></a>
+							<ul>
+								<li><a href="tab-bottom.html" data-loader="show">Tab (Bottom)</a></li>
+								<li><a href="tab-top.html" data-loader="show">Tab (Top)</a></li>
+								<li><a href="accordion.html" data-loader="show">Accordion</a></li>
+								<li><a href="popup.html" data-loader="show">Popup Modal</a></li>
+								<li><a href="checkbox-list.html" data-loader="show">Check List</a></li>
+								<li><a href="link-list.html" data-loader="show">Link List</a></li>
+								<li><a href="link-list-two-column.html" data-loader="show">Two Column Links</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#"><img src="img/content/icons/15.png" alt=""><strong> Pages</strong> <span class="fa fa-angle-down"></span></a>
+							<ul>
+								<li><a href="profile.html" data-loader="show">User Profile</a></li>
+								<li><a href="search-result.html" data-loader="show">Search Results</a></li>
+								<li><a href="contact.html" data-loader="show">Contact</a></li>
+								<li><a href="blank.html" data-loader="show">Blank Page</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			<!-- Menu navigation end -->
+			</nav>
+		</div>
+		<div class="wrapper-inline">
+			<!-- Header area start -->
+			<header class="no-background"> <!-- extra class no-background -->
+
+				<a class="go-back-link" href="javascript:history.back();"><i class="fa fa-arrow-left"></i></a>
+				<div class="search-button" data-search="open">
+					<img src="img/content/notification1.png" class="not-icon1" alt="">
+					<img src="img/content/notification2.png" class="not-icon2" alt="">
+				</div>
+
+				<div class="navi-menu-button">
+					<em></em>
+					<em></em>
+					<em></em>
+				</div>
+
+			</header>
+			<!-- Header area end -->
+
+			<!--NOTIFICATION BOX CONTENT START-->
+			<div class="search-form">
+				<span class="close-search-form" data-search="close"><i class="fa fa-times"></i> </span>
+				<form>
+					<div class="search-input">
+						<input type="text" name="q" class="form-element" placeholder="Search...">
+						<button type="submit" class="search-input-btn"><i class="fa fa-arrow-right"></i></button>
+					</div>
+				</form>
+			    <ul class="notification-list list-unstyled">
+					<li>
+						<div class="d-flex align-items-center justify-content-between">
+                          <div class="d-flex align-items-center">
+                            <div class="">
+                              <h5 class="coin-name">You have 3 notifications</h5>
+                            </div>
+                          </div>
+                          <div>
+                            <a href=""><small class="text-muted d-block">mark all as read</small></a>
+                          </div>
+                        </div>
+					</li>
+					<li>
+						<div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+	                            <div class="notice-icon available">
+	                                <i class="fa fa-check"></i>
+	                            </div>
+	                            <div class="ml-10">
+	                              <h4 class="coin-name">Successful transaction 0.01 BTC</h4>
+	                              <small class="text-muted">15 min ago</small>
+	                            </div>
+                            </div>
+                        </div>
+					</li>
+					<li>
+						<div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+	                            <div class="notice-icon away">
+	                                <i class="fa fa-clock-o"></i>
+	                            </div>
+	                            <div class="ml-10">
+	                              <h4 class="coin-name">4 of Pending Transactions!</h4>
+	                              <small class="text-muted"> 12 hours ago</small>
+	                            </div>
+                            </div>
+                        </div>
+					</li>
+					<li>
+						<div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+	                            <div class="notice-icon busy">
+	                                <i class="fa fa-times"></i>
+	                            </div>
+	                            <div class="ml-10">
+	                              <h4 class="coin-name">Cancelled Order of 200 ICO</h4>
+	                              <small class="text-muted">15 Feb - 08:34</small>
+	                            </div>
+                            </div>
+                        </div>
+					</li>
+					<li>
+						<div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+	                            <div class="notice-icon available">
+	                                <i class="fa fa-check"></i>
+	                            </div>
+	                            <div class="ml-10">
+	                              <h4 class="coin-name">Great Speed Notify of 1.34 LTC</h4>
+	                              <small class="text-muted">24 jan - 20:43</small>
+	                            </div>
+                            </div>
+                        </div>
+					</li>
+					<li>
+						<div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+	                            <a href="" class="text-muted">Read all notifications</a>
+                            </div>
+                        </div>
+					</li>
+					
+				</ul>
+			</div>
+			<!--NOTIFICATION BOX CONTENT END-->
+
+			<!-- Page content start -->
+			<main class="margin mt-0">
+
+				<div class="dash-balance">
+					<div class="dash-content relative">
+						<h3 class="w-text">Charts</h3>
+						<div class="notification">
+							<a href=""><i class="fa fa-plus"></i></a>
+						</div>
+					</div>
+				</div>
+
+				<div class="bal-section container">
+					<div class="content"> 
+					    <div class="c-panel pl-0">
+					    	
+					        <div class="row align-items-center">
+					        	<div class="col-12">
+					        		<div class="advertising-wrapper">
+										<div id="stackedBarGraph" ></div>
+									</div>
+					        	</div>
+					        	
+					        </div>     
+					    </div>
+		  			</div>
+				</div>
+
+				<section class="container">
+			        <div class="content"> 
+			         	<h4 class="title-main">Chart 2</h4>
+					    <div class="c-panel pl-0">
+					    	
+					        <div class="row align-items-center">
+					        	<div class="col-12">
+					        		<div class="advertising-wrapper">
+										<div id="lineGraph" ></div>
+									</div>
+					        	</div>
+					        	
+					        </div>     
+					    </div>
+		  			</div>
+			    </section>
+
+			    <section class="container">
+			        <div class="content"> 
+			         	<h4 class="title-main">Chart 3</h4>
+					    <div class="c-panel pl-0">
+					    	
+					        <div class="row align-items-center">
+					        	<div class="col-12">
+					        		<div class="advertising-wrapper">
+										<div id="areaSplineGraph" ></div>
+									</div>
+					        	</div>
+					        	
+					        </div>     
+					    </div>
+		  			</div>
+			    </section>
+
+			    <section class="container">
+			        <div class="content"> 
+			         	<h4 class="title-main">Chart 4</h4>
+					    <div class="c-panel pl-0">
+					    	
+					        <div class="row align-items-center">
+					        	<div class="col-12">
+					        		<div class="advertising-wrapper">
+										<div id="stepGraph" ></div>
+									</div>
+					        	</div>
+					        	
+					        </div>     
+					    </div>
+		  			</div>
+			    </section>
+
+			    <section class="container">
+			        <div class="content"> 
+			         	<h4 class="title-main">Chart 5</h4>
+					    <div class="c-panel pl-0">
+					    	
+					        <div class="row align-items-center">
+					        	<div class="col-12">
+					        		<div class="advertising-wrapper">
+										<div id="barAreaGraph" ></div>
+									</div>
+					        	</div>
+					        	
+					        </div>     
+					    </div>
+		  			</div>
+			    </section>
+
+			    <section class="container">
+			        <div class="content"> 
+			         	<h4 class="title-main">Chart 6</h4>
+					    <div class="c-panel pl-0">
+					    	
+					        <div class="row align-items-center">
+					        	<div class="col-12">
+					        		<div class="advertising-wrapper">
+										<div id="scatterPlot" ></div>
+									</div>
+					        	</div>
+					        	
+					        </div>     
+					    </div>
+		  			</div>
+			    </section>
+
+			    <section class="container">
+			        <div class="content"> 
+			         	<h4 class="title-main">Chart 7</h4>
+					    <div class="c-panel pl-0">
+					    	
+					        <div class="row align-items-center">
+					        	<div class="col-12">
+					        		<div class="advertising-wrapper">
+										<div class="accountValue" ></div>
+									</div>
+					        	</div>
+					        	
+					        </div>     
+					    </div>
+		  			</div>
+			    </section>
+
+			    <section class="container">
+			        <div class="content"> 
+			         	<h4 class="title-main">Chart 8</h4>
+					    <div class="c-panel pl-0">
+					    	
+					        <div class="row align-items-center">
+					        	<div class="col-12">
+					        		<div class="advertising-wrapper">
+										<div id="donutChart" ></div>
+									</div>
+					        	</div>
+					        	
+					        </div>     
+					    </div>
+		  			</div>
+			    </section>
+
+			    <section class="container mb-30">
+			         <div class="content"> 
+			         	<h4 class="title-main">chart 9</h4>
+					    <div class="c-panel">
+					    	
+					        <div class="row align-items-center">
+					        	<div class="col-12 col-sm-6">
+					        		<div class="advertising-wrapper">
+										<div id="advertising" class="chart-height-sm"></div>
+										<h3 class="info-label"><span>Balance</span>78%</h3>
+									</div>
+					        	</div>
+					        </div>     
+					    </div>
+		  			</div>
+			    </section>
+
+				
+				<footer>
+					<div class="container">
+						<ul>
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-google"></i></a></li>
+							<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+						</ul>
+						<p>Copyright © All Right Reserved</p>
+					</div>
+				</footer>
+				
+			</main>
+			<!-- Page content end -->
+		</div>
+	</div>
+
+	<!--Page loader DOM Elements. Requared all pages-->
+	<div class="sweet-loader">
+		<div class="box">
+		  	<div class="circle1"></div>
+		  	<div class="circle2"></div>
+		  	<div class="circle3"></div>
+		</div>
+	</div>
+
+	<!-- JQuery library file. requared all pages -->
+	<script src="js/jquery-3.2.1.min.js"></script>
+
+	<!-- Swiper JS -->
+    <script src="js/swiper.min.js"></script>
+
+	 <!-- Initialize Swiper -->
+ 	
+  	<!-- Flot Charts -->
+	<script src="plugins/c3-chart/c3.min.js"></script>
+	<script src="plugins/c3-chart/d3.min.js"></script>
+	<script src="plugins/c3-chart/c3.custom.js"></script>
+  	<!-- Flot Charts -->
+	<script src="plugins/flot/jquery.flot.min.js"></script>
+	<script src="plugins/flot/jquery.flot.time.min.js"></script>
+	<script src="plugins/flot/jquery.flot.pie.min.js"></script>
+	<script src="plugins/flot/jquery.flot.tooltip.min.js"></script>
+	<script src="plugins/flot/jquery.flot.resize.min.js"></script>
+    <!-- Sparkline-->
+    <script src="plugins/jquery-sparkline/jquery.sparkline.js"></script>
+
+	<!-- Template global script file. requared all pages -->
+	<script src="js/app-charts.js"></script>
+	<script src="js/global.script.js"></script>
+
+
+
+</body>
+
+</html>
