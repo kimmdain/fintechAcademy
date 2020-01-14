@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-
+​
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
 	<title>Crypto Mobile Template</title>
-
+​
 	<!-- Google font file. If you want you can change. -->
 	<link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,900" rel="stylesheet">
-
+​
 	<!-- Fontawesome font file css -->
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-
+​
 	<!-- Template global css file. Requared all pages -->
 	<link rel="stylesheet" type="text/css" href="css/global.style.css">
 </head>
-
+​
 <body>
-
+	
 	<div class="wrapper">
 		<div class="nav-menu">
 			<nav class="menu">
-
+				
 				<!-- Menu navigation start -->
 				<div class="nav-container">
 					<ul class="main-menu">
@@ -54,7 +54,7 @@
 								<li><a href="forgot-password.html" data-loader="show">Forgot Password</a></li>
 							</ul>
 						</li>
-
+						
 						<li>
 							<a href="javascript:void(0);"><img src="img/content/icons/8.png" alt=""> <strong>Wizards</strong> <span class="fa fa-angle-down"></span></a>
 							<ul>
@@ -109,12 +109,12 @@
 			<!-- Page content start -->
 			<main>
 				<div class="container">
-                    <div class="form-divider"></div>
-                    <video id="preview" style="width: 100%; height:100%; margin-top: 25vh"></video>
+                    <video id="preview"></video>
+                    <div id="transComplete"></div>
 				</div>
-
+​
 				<div class="form-divider"></div>
-
+​
 				<footer>
 					<div class="container">
 						<ul>
@@ -126,13 +126,13 @@
 						<p>Copyright © All Right Reserved</p>
 					</div>
 				</footer>
-
+​
 			</main>
 			<!-- Page content end -->
 		</div>
 	</div>
-
-
+​
+​
 	<!--Page loader DOM Elements. Requared all pages-->
 	<div class="sweet-loader">
 		<div class="box">
@@ -140,68 +140,51 @@
 		  	<div class="circle2"></div>
 		  	<div class="circle3"></div>
 		</div>
-    </div>
-    <script src="js/instascan.min.js"></script>
+	</div>
 	<!-- JQuery library file. requared all pages -->
     <script src="js/jquery-3.2.1.min.js"></script>
-    <!-- Template global script file. requared all pages -->
-    
-    <!-- 아래 부분 추가 Qr 코드-->
-	<script src="js/global.script.js"></script>
-    <script type="text/javascript" src="js/instascan.min.js"></script>
+	<!-- Template global script file. requared all pages -->
     <script src="js/global.script.js"></script>
-    <script>
-        let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
-    scanner.addListener('scan', function (content) {
-        console.log(content)
+    <script type="text/javascript" src="js/instascan.min.js"></script>
+
+	<script>
+	 let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+      scanner.addListener('scan', function (content) {
+        // 이벤트 발생 부분
+        console.log(content); // content 는 fin_use_num임
+        var qs = content;
+		var jwtToken = sessionStorage.getItem('jwtToken')
+		console.log(content);
         $.ajax({
-        url: 'http://localhost:3002/withdrawQr',
-        type: 'POST',
-        headers: {
-            'x-access-token': sessionStorage.getItem('jwtToken')
-        },
-        data: {
-            qrFin : content
-            // ?!
-        },
-        success: function (data) {
+		url:'http://localhost:3000/franMain',
+		type : 'POST',
+		headers : {
+			'x-access-token' : jwtToken     // 필요한가?
+		},
+		data : {
+            fin_use_num : qs
+            
+		},
+		success:function(data){
             console.log(data);
-            if(data == 1){
-                alert('결제가 완료되었습니다.');
-            }
-            else {
-                alert('결제가 미승인되었습니다')
-            }
-        }
-    })
-    });
-    Instascan.Camera.getCameras().then(function (cameras) {
+            sessionStorage.setItem('jwtToken', data);
+            
+			$("#transComplete").text(data); // balance_amt 바꾸자.
+		}
+	})
+      });
+      Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
-            scanner.start(cameras[0]);
+          scanner.start(cameras[0]);
         } else {
-            console.error('No cameras found.');
+          console.error('No cameras found.');
         }
-    }).catch(function (e) {
+      }).catch(function (e) {
         console.error(e);
-    });
-</script>
-	<!-- <script>
-    //     let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
-    //   scanner.addListener('scan', function (content) {
-    //     console.log(content);
-    //   });
-    //   Instascan.Camera.getCameras().then(function (cameras) {
-    //     if (cameras.length > 0) {
-    //       scanner.start(cameras[0]);
-    //     } else {
-    //       console.error('No cameras found.');
-    //     }
-    //   }).catch(function (e) {
-    //     console.error(e);
-    //   });
-	// script>  -->
-
+      });
+	</script>
+	
 </body>
-
-
+​
+​
 </html>

@@ -19,7 +19,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+
+app.use('/', indexRouter); // 위에 정의되어 있음
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
