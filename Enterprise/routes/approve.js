@@ -16,18 +16,18 @@ var connection = mysql.createConnection({
 connection.connect;
 
 
-router.post('/emplist', function(req, res){
+router.post('/emplist', function(req, res){ // 직원 목록 불러오기 
     var enterData = req.decoded;
-    var sql ="SELECT enterpriseCode FROM enterprise WHERE id = ?"
-    connection.query(sql, [enterData.enterpriseID], function (error, results, fields) {
+    var sql ="SELECT name, rank, balance, ID, approved FROM employee WHERE ID = ? and enterprise.enterpriseCode=employee.enterpriseCode"
+    connection.query(sql, [enterData.enterpriseID], function (error, result) {
         if (error) {
             console.error(err);
             throw error;
         }
         else {
-            console.log('The result is: ', results);
+            console.log('The result is: ', result);
             console.log('sql is ', this.sql);
-            res.json(results);
+            res.json(result);
         }
        
     });
@@ -37,22 +37,16 @@ router.post('/emplist', function(req, res){
 
 
 
-router.post('/approve', function(req, res){
-    var isapprove = 
+router.post('/approve', function(req, res){ // 직원 승인
 
+    var Data = req.decoded;
+    var sql ="UPDATE employee SET approved=1 WHERE ID = ?";
 
-    var enterData = req.decoded;
-    var sql ="SELECT enterpriseCode FROM enterprise WHERE id = ?"
-    connection.query(sql, [enterData.enterpriseID], function (error, results, fields) {
-        if (error) {
-            console.error(err);
-            throw error;
-        }
-        else {
-            console.log('The result is: ', results);
-            console.log('sql is ', this.sql);
-            res.json(results);
-        }
+    connection.query(sql, [Data.ID], function (error, results, fields) {
+        if (error) throw error;
+        console.log('The result is: ', results);
+        console.log('sql is ', this.sql);
+        res.json(1);
        
     });
 

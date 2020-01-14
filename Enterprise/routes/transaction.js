@@ -20,7 +20,7 @@ router.post('/transaction', auth, function(req, res){   //회사 거래내역조
     var userData = req.decoded;
     var finusenum = req.body.fin_use_num;
 
-    var sql ="SELECT * FROM user WHERE id = ?"
+    var sql ="SELECT * FROM enterprise WHERE id = ?"
     connection.query(sql, [userData.userId], function(err, result){
         if(err){
             console.error(err);
