@@ -45,20 +45,21 @@ router.post('/enterEmplist', auth, function(req, res){
 })
 
 
+//UPDATE [테이블] SET [열] = '변경할값' WHERE [조건]
 
-router.post('/approve', function(req, res){
+router.post('/enterApprove', auth, function(req, res){
 
     var enterData = req.decoded;
-    var sql ="SELECT enterpriseCode FROM enterprise WHERE id = ?"
-    connection.query(sql, [enterData.enterpriseID], function (error, results, fields) {
-        if (error) {
-            console.error(err);
-            throw error;
-        }
-        else {
-            console.log('The result is: ', results[0].enterpriseCode+"((((((((((((((((((");
-            console.log('sql is ', this.sql);
+    var id = req.body.ID;
 
+    var sql ="UPDATE employee SET approved = 1 where id = ? "
+    
+    connection.query(sql, [id], function (error, results, fields) {
+        if (error) {
+            console.error(error);
+            throw error;
+        }else {
+            console.log('sql is ', this.sql);
             res.json(results);
         }
     });

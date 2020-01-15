@@ -10,10 +10,10 @@
 	<link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,900" rel="stylesheet">
 ​
 	<!-- Fontawesome font file css -->
-	<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
 ​
 	<!-- Template global css file. Requared all pages -->
-	<link rel="stylesheet" type="text/css" href="/css/global.style.css">
+	<link rel="stylesheet" type="text/css" href="css/global.style.css">
 </head>
 ​
 <body>
@@ -142,38 +142,28 @@
 		</div>
 	</div>
 	<!-- JQuery library file. requared all pages -->
-    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
 	<!-- Template global script file. requared all pages -->
-    <script src="/js/global.script.js"></script>
-    <script type="text/javascript" src="/js/instascan.min.js"></script>
+    <script src="js/global.script.js"></script>
+    <script type="text/javascript" src="js/instascan.min.js"></script>
 
 	<script>
 	 let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
       scanner.addListener('scan', function (content) {
         // 이벤트 발생 부분
-        console.log("hihi " + content); // content 는 fin_use_num임
-		var qs = content;
-		var fun = '199160569057881529753629'; // 핀테크 유즈넘버 일단 임의로 테스트용
-		
-		// jd, 111 이런 방식으로 나옴
-		var jbString = content;
-		var jbSplit = jbString.split(',');
-		// jbSplit[0] = 가맹점이름
-		// jbSplit[1] = 가맹점코드
-
+        console.log(content); // content 는 fin_use_num임
+        var qs = content;
 		var jwtToken = sessionStorage.getItem('jwtToken')
-		//console.log(content);
-		
+		console.log(content);
         $.ajax({
-		url:'http://localhost:3000/qr/withdrawQr',
+		url:'http://localhost:3000/franMain',
 		type : 'POST',
 		headers : {
 			'x-access-token' : jwtToken     // 필요한가?
 		},
 		data : {
-			fin_use_num : fun,
-			name : jbSplit[0],
-			enterpriseCode : jbSplit[1]
+            fin_use_num : qs
+            
 		},
 		success:function(data){
             console.log(data);

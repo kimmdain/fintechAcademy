@@ -1,10 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var auth = require('../lib/auth');
-var jwt = require('jsonwebtoken');
-var request =require('request'); //다 넣어줘야함
-
-var tokenKey = "fintechAcademy0$1#0@6!";
 
 var mysql = require('mysql');
 var config = require('../../config/config.json');

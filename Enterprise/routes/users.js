@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
 var tokenKey = "fintechAcademy0$1#0@6!";
-var request =require('request'); //다 넣어줘야함
 
 var mysql = require('mysql');
 var config = require('../../config/config.json');
@@ -30,7 +29,6 @@ router.get('/login', function(req, res){
 })
 
 router.get('/enterMain', function(req, res){
-  console.log("!!!!!!!")
   res.render('enterMain');
 })
 

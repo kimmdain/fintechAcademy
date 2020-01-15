@@ -44,7 +44,10 @@
 					<div class="form-divider"></div>
 					<div class="form-divider"></div>
 					<div class="form-row-group with-icons">
-                        
+                        <div class="form-row no-padding">
+							<i class="fa fa-user"></i>
+							<input type="text" id="enterpriseCode" class="form-element" placeholder="EnterpriseCode" value="111">
+						</div>
                         <div class="form-row no-padding">
 							<i class="fa fa-user"></i>
 							<input type="text" id="userName" class="form-element" placeholder="Username" value="john doe">
@@ -89,7 +92,7 @@
     
     <script>
         $("#signupBtn").click(function(){
-            
+            var enterpriseCode = $("#enterpriseCode").val();
             var name = $("#userName").val();
             var ID = $("#userID").val();
             var password = $("#userPassword").val();
@@ -97,10 +100,10 @@
 			alert(name + ' ' + ID + ' ' + password);
 			
             $.ajax({
-                url:'http://localhost:3000/users/user',
+                url:'http://localhost:3000/user',
                 type : 'POST',
                 data : {
-                  
+                    entCode : enterpriseCode,
                     name : name,
                     ID : ID,
                     password : password                    
@@ -111,7 +114,7 @@
                 success:function(data){
                     if(data == 1){
                        alert("가입 완료");
-                       window.location = "/users/login"
+                       window.location = "/login"
                     }
                 }
             })

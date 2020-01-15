@@ -20,7 +20,7 @@ var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : '359812wjd', // 본인 비번 쓰기!
+  password : 'root', // 본인 비번 쓰기!
   database : 'fintech'
 });
 
@@ -46,7 +46,6 @@ app.get('/empQrcode', function(req, res){
 
 
 // -------------------- post ---------------------//
-
 app.post('/Empuser', function(req, res){
     console.log(req.body);
     var entCode = req.body.entCode;
@@ -78,8 +77,8 @@ app.post('/empLogin', function(req, res){
         else if (results[0].approved != '1') {
             console.log('미승인 계좌입니다.');
             res.json(1);
-        }
-        else{
+       
+        }else{
             console.log('비밀번호 틀렸습니다.');
             res.json(0);
         }    
