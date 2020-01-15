@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var auth = require('./lib/auth');
+var auth = require('../lib/auth');
 
 var mysql = require('mysql');
 var config = require('../../config/config.json');
@@ -15,21 +15,25 @@ var connection = mysql.createConnection({
 connection.connect;
 
 //get 필요
+router.get('/enterTransaction', function(req, res){
+  res.render('enterTransaction');
+})
 
-router.post('/transaction', auth, function(req, res){   //회사 거래내역조회 -sql고쳐야함
-    var userData = req.decoded;
+
+router.post('/enterTransaction', auth, function(req, res){   //회사 거래내역조회 
+    var userData = req.decoded  ;
     var finusenum = req.body.fin_use_num;
 
-    var sql ="SELECT * FROM enterprise WHERE id = ?"
+    var sql = "SELECT * FROM user WHERE id = ?"
     connection.query(sql, [userData.userId], function(err, result){
         if(err){
             console.error(err);
             throw err;
-        }
-        else {
-            console.log(result);
+        }else {
+         
+          console.log(result);
             var random = Math.floor(Math.random() * 1000000000) + 1;    
-            var ranId = "T991605830U" + random;
+            var ranId = "T991604370U" + random;
             var options = {
                 method: 'GET',
                 url: 'https://testapi.openbanking.or.kr/v2.0/account/transaction_list/fin_num',
@@ -56,3 +60,5 @@ router.post('/transaction', auth, function(req, res){   //회사 거래내역조
         }
 })
 })
+
+module.exports = router;

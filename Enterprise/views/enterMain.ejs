@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+	<title>Crypto Mobile Template</title>
+
+	<!-- Google font file. If you want you can change. -->
+	<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,900" rel="stylesheet">
+
+	<!-- Fontawesome font file css -->
+	<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+
+	<!-- Animate css file for css3 animations. for more : https://daneden.github.io/animate.css -->
+	<!-- Only use animate action. If you dont use animation, you don't have to add.-->
+	<link rel="stylesheet" type="text/css" href="/css/animate.css">
+	<link rel="stylesheet" type="text/css" href="/css/cryptocoins.css">
+	<link rel="stylesheet" type="text/css" href="/plugins/c3-chart/c3.css">
+
+	<!-- Template global css file. Requared all pages -->
+	<link rel="stylesheet" type="text/css" href="/css/global.style.css">
+
+	<!-- Swiper slider css file -->
+	<link rel="stylesheet" href="/css/swiper.min.css">
+
+	<!--turbo slider plugin css file -->
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/plugins/turbo-slider/turbo.css">
+
+</head>
+
+<body>
+	
+
+	<!--Page loader DOM Elements. Requared all pages-->
+	<div class="sweet-loader">
+		<div class="box">
+		  	<div class="circle1"></div>
+		  	<div class="circle2"></div>
+		  	<div class="circle3"></div>
+		</div>
+    </div>
+    
+
+    <div class="contact-address">
+                    
+        <div class="form-row">
+            <button type="button" id="balance" class="button circle block orange">잔액조회</button>
+        </div>
+
+
+        <div style="padding:10px;"> 
+
+        <div class="form-row">
+            <button type="button" id="transList" class="button circle block orange">거래내역조회</button>
+        </div>
+        
+
+        <div style="padding:10px;"> 
+
+            <div class="form-row">
+                <button type="button" id="employeeList" class="button circle block orange">직원정보수정</button>
+            </div>
+    </div>
+
+
+
+	<!-- JQuery library file. requared all pages -->
+	<script src="/js/jquery-3.2.1.min.js"></script>
+
+	<!-- Swiper JS -->
+    <script src="/js/swiper.min.js"></script>
+
+	 <!-- Initialize Swiper -->
+ 	
+  	<!-- Flot Charts -->
+	<script src="plugins/c3-chart/c3.min.js"></script>
+	<script src="plugins/c3-chart/d3.min.js"></script>
+	<script src="plugins/c3-chart/c3.custom.js"></script>
+  	<!-- Flot Charts -->
+	<script src="plugins/flot/jquery.flot.min.js"></script>
+	<script src="plugins/flot/jquery.flot.time.min.js"></script>
+	<script src="plugins/flot/jquery.flot.pie.min.js"></script>
+	<script src="plugins/flot/jquery.flot.tooltip.min.js"></script>
+	<script src="plugins/flot/jquery.flot.resize.min.js"></script>
+    <!-- Sparkline-->
+    <script src="plugins/jquery-sparkline/jquery.sparkline.js"></script>
+
+	<!-- Template global script file. requared all pages -->
+	<script src="/js/app-charts.js"></script>
+	<script src="/js/global.script.js"></script>
+
+</body>
+
+<!--
+<script>
+    var jwtToken = sessionStorage.getItem('jwtToken')
+    fetchUserData();
+    function fetchUserData(){
+        $.ajax({
+            url:'http://localhost:3000/accountList/enterAccountList',
+            type : 'POST',
+            headers : {
+                'x-access-token' : jwtToken
+            },
+            success:function(data){
+                for(var i=0; i < data.res_list.length; i++){
+                    $("#cardList").append(
+                        '<div class="balance-card mb-15">'+
+                            '<div class="d-flex align-items-center">'+
+                                '<div class="d-flex flex-grow">'+
+                                    '<div class="mr-auto">' +
+                                        '<h1 class="b-val">'+data.res_list[i].account_alias+'</h1>'+
+                                        '<p class="g-text mb-10">'+data.res_list[i].fintech_use_num+'</p>'+
+                                    '</div>'+
+                                '<div class="ml-auto align-self-end">'+
+                                '<a href="/balance?fin_use_num='+data.res_list[i].fintech_use_num+'">잔액조회</a>'+
+                                '<a href="/qrcode?fin_use_num='+data.res_list[i].fintech_use_num+'">QR생성</a>'+
+                                '</div>'+
+                            '</div>'+
+                       '</div>'+
+                    '</div>'
+                    )
+                }    
+            }
+        })
+    }
+</script>
+-->
+
+<script>
+
+    $("#balance").click(function(){
+        var tmpWindow = window.open("about:blank"); 
+        tmpWindow.location = "http://localhost:3000/balance/enterBalance";
+    })
+
+    $("#transList").click(function(){
+        var tmpWindow = window.open("about:blank");
+        tmpWindow.location = "http://localhost:3000/transaction/enterTransaction";
+    })
+
+    $("#employeeList").click(function(){
+        var tmpWindow = window.open("about:blank");
+        tmpWindow.location = "http://localhost:3000/approve/enterApprove";
+    })
+
+</script>
+</html>

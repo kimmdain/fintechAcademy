@@ -28,8 +28,12 @@ router.get('/login', function(req, res){
   res.render('enterLogin');
 })
 
-//-----------post------------//
+router.get('/enterMain', function(req, res){
+  console.log("!!!!!!!")
+  res.render('enterMain');
+})
 
+//-----------post------------//
 router.post('/user', function(req, res){ //회사 회원가입 API
   console.log(req.body);
  // var entCode = req.body.entCode;
@@ -48,17 +52,18 @@ router.post('/user', function(req, res){ //회사 회원가입 API
 router.post('/login', function(req, res){ //회사 로그인 API
   var userID = req.body.ID;
   var userPassword = req.body.password;
-  var sql = "SELECT * FROM fintech.enterprise WHERE ID = ?";
+
+  var sql = "SELECT * FROM fintech.enterprise WHERE enterpriseID = ?";
   connection.query(sql, [userID], function (error, results, fields) {
       if (error) throw error;
-      console.log(results[0].PW, userPassword);
-      if(results[0].PW == userPassword){     
+      console.log(results[0].enterprisePW, results[0].enterpriseCode );
+      if(results[0].enterprisePW == userPassword){     
           console.log(results);
-          res.json(results)
           jwt.sign(
               {
                   userId : results[0].enterpriseID,
-                  userPW : results[0].enterprisePW
+                  userPW : results[0].enterprisePW,
+                  userCode : results[0].enterpriseCode
               },
               tokenKey,
               {
@@ -71,7 +76,6 @@ router.post('/login', function(req, res){ //회사 로그인 API
                   res.json(token)
               }
           )
-
       }
       else{
           console.log('비밀번호 틀렸습니다.');
@@ -79,6 +83,5 @@ router.post('/login', function(req, res){ //회사 로그인 API
       }    
   });
 })
-
 
 module.exports = router;

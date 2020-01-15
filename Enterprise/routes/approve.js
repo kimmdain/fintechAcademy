@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
 var tokenKey = "fintechAcademy0$1#0@6!";
+var auth = require('../lib/auth');
 
 var mysql = require('mysql');
 var config = require('../../config/config.json');
@@ -16,39 +17,51 @@ var connection = mysql.createConnection({
 connection.connect;
 
 
-router.post('/emplist', function(req, res){ // 직원 목록 불러오기 
+router.get('/enterApprove', function(req, res){
+    res.render('enterApprove');
+  })
+
+
+router.post('/enterEmplist', auth, function(req, res){
+
     var enterData = req.decoded;
-    var sql ="SELECT name, rank, balance, ID, approved FROM employee WHERE ID = ? and enterprise.enterpriseCode=employee.enterpriseCode"
-    connection.query(sql, [enterData.enterpriseID], function (error, result) {
+    console.log(enterData);
+    var sql ="SELECT * FROM employee WHERE enterpriseCode = ?"
+
+    connection.query(sql, [enterData.userCode], function (error, results, fields) {
+        
+        if (error) {
+            console.error(err);
+            throw error;
+        }else {
+          
+            console.log('The result is: ', results);
+            console.log('sql is ', this.sql);
+
+            res.json(results);
+            console.log(results)
+        }
+    }) 
+})
+
+
+
+router.post('/approve', function(req, res){
+
+    var enterData = req.decoded;
+    var sql ="SELECT enterpriseCode FROM enterprise WHERE id = ?"
+    connection.query(sql, [enterData.enterpriseID], function (error, results, fields) {
         if (error) {
             console.error(err);
             throw error;
         }
         else {
-            console.log('The result is: ', result);
+            console.log('The result is: ', results[0].enterpriseCode+"((((((((((((((((((");
             console.log('sql is ', this.sql);
-            res.json(result);
+
+            res.json(results);
         }
-       
     });
-
-
 })
 
-
-
-router.post('/approve', function(req, res){ // 직원 승인
-
-    var Data = req.decoded;
-    var sql ="UPDATE employee SET approved=1 WHERE ID = ?";
-
-    connection.query(sql, [Data.ID], function (error, results, fields) {
-        if (error) throw error;
-        console.log('The result is: ', results);
-        console.log('sql is ', this.sql);
-        res.json(1);
-       
-    });
-
-
-})
+module.exports = router;
