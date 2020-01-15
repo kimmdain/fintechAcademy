@@ -16,7 +16,7 @@ connection.connect;
 
 //get필요
 
-router.post('/balance', auth, function(req, res){ // 회사 계좌 잔액 조회
+router.post('/balance', auth, function(req, res){ // 회사 계좌 잔액 조회 -sql고쳐야함
     var userData = req.decoded;
     var finusenum = req.body.fin_use_num;
 

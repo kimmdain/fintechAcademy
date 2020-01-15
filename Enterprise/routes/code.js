@@ -15,7 +15,7 @@ connection.connect;
 
 /* GET users listing. */
 
-router.post('/code', function(req, res){  //회사 코드 확인하는 API
+router.post('/code', auth, function(req, res){  //회사 코드 확인하는 API
     //console.log(req.body);
    // var entCode = req.body.entCode;
     var enterData = req.decoded;

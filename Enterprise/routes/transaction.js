@@ -16,7 +16,7 @@ connection.connect;
 
 //get 필요
 
-router.post('/transaction', auth, function(req, res){   //회사 거래내역조회 
+router.post('/transaction', auth, function(req, res){   //회사 거래내역조회 -sql고쳐야함
     var userData = req.decoded;
     var finusenum = req.body.fin_use_num;
 
