@@ -152,9 +152,22 @@
       scanner.addListener('scan', function (content) {
         // 이벤트 발생 부분
         console.log(content); // content 는 fin_use_num임
-        var qs = content;
+		var qs = content;
+		
+		// jd, 111 이런 방식으로 나옴
+		var jbString = content;
+		var jbSplit = jbString.split(',');
+		// jbSplit[0] = 이름
+		// jbSplit[1] = 회사번호
+		
+		// for ( var i in jbSplit ) {
+		// 	document.write( '<p>hihi' + jbSplit[i] + 'hihi</p>' );
+		// }
+
+
 		var jwtToken = sessionStorage.getItem('jwtToken')
 		console.log(content);
+		
         $.ajax({
 		url:'http://localhost:3000/franMain',
 		type : 'POST',
