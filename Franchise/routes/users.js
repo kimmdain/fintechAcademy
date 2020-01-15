@@ -2,9 +2,11 @@
 
 var express = require('express');
 var router = express.Router();
-
+var auth = require('../lib/auth');
 
 var mysql = require('mysql');
+var jwt = require('jsonwebtoken');
+var tokenKey = "fintechAcademy0$1#0@6!";
 
 // my sql 셋팅
 var config = require('../../config/config.json');
@@ -48,16 +50,52 @@ router.post('/franSignup', function(req, res){
   });
 })
 
+// router.post('/franLogin', function(req, res){
+//   var userID = req.body.franId;
+//   var userPassword = req.body.franPw;
+//   var sql = "SELECT * FROM fintech.franchise WHERE franId = ?";
+//   connection.query(sql, [userID], function (error, results, fields) {
+//       if (error) throw error;
+//       console.log(results[0].franPw, userPassword);
+//       if(results[0].franPw == userPassword){    // approved = 0(미승인), 1(승인) 
+//           console.log(results);
+//           res.json(results);
+//       }
+//       // else if (results[0].approved != '1') {
+//       //     console.log('미승인 계좌입니다.');
+//       //     res.json(1);
+//       // }
+//       else{
+//           console.log('비밀번호 틀렸습니다.');
+//           res.json(0);
+//       }    
+//   });
+// })
 router.post('/franLogin', function(req, res){
   var userID = req.body.franId;
-  var userPassword = req.body.franPw;
+  var userPw = req.body.franPw;
   var sql = "SELECT * FROM fintech.franchise WHERE franId = ?";
   connection.query(sql, [userID], function (error, results, fields) {
       if (error) throw error;
-      console.log(results[0].franPw, userPassword);
-      if(results[0].franPw == userPassword){    // approved = 0(미승인), 1(승인) 
-          console.log(results);
-          res.json(results);
+      console.log(results[0].franPw, userPw);
+      if(results[0].franPw == userPw){    // approved = 0(미승인), 1(승인) 
+        jwt.sign(
+          {
+              userId : results[0].franid,
+              userPw : results[0].franPw
+          },
+          tokenKey,
+          {
+              expiresIn : '90d',
+              issuer : 'fintech.admin',
+              subject : 'user.login.info'
+          },
+          function(err, token){
+              console.log('로그인 성공', token)
+              res.json(token)
+          }
+      )
+          
       }
       // else if (results[0].approved != '1') {
       //     console.log('미승인 계좌입니다.');
@@ -68,6 +106,19 @@ router.post('/franLogin', function(req, res){
           res.json(0);
       }    
   });
-})
+});
+
+router.post('/menu', auth, function(req, res){
+  var userData = req.decoded;
+  var sql = "SELECT menu, price FROM franchise";
+  connection.query(sql, function (error, results, fields) {
+      if (error) { console.error(err); throw error; }
+      else{
+        console.log("1111111");
+      console.log(results);
+      res.json(results);
+      }      
+  });
+});
 
 module.exports = router;
