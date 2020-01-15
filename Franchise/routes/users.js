@@ -81,7 +81,7 @@ router.post('/franLogin', function(req, res){
       if(results[0].franPw == userPw){    // approved = 0(미승인), 1(승인) 
         jwt.sign(
           {
-              userId : results[0].franid,
+              userId : results[0].franId,
               userPw : results[0].franPw
           },
           tokenKey,
