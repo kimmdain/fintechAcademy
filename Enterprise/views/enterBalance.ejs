@@ -165,7 +165,7 @@
     
     var qs = getQueryStringObject();
     var jwtToken = sessionStorage.getItem('jwtToken');
-	
+    
     $.ajax({
 		url:'http://localhost:3000/balance/enterBalance',
 		type : 'POST',
@@ -177,7 +177,6 @@
 		},
 		success:function(data){
 			console.log(data+"----------------------------------");
-			sessionStorage.setItem('jwtToken', data);
 			$("#balanceText").text(data.balance_amt);
 		}
     })

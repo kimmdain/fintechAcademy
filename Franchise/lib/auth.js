@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-var tokenKey = "fintechAcademy0$1#0@6!"
+var tokenKey = "fintechAcademy23495"
 const authMiddleware = (req, res, next) => {
    const token = req.headers['x-access-token'] || req.query.token;
    console.error(token)

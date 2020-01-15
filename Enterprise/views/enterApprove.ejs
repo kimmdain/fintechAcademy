@@ -63,7 +63,7 @@
 						<li>
 							<a href="javascript:void(0);"><img src="img/content/icons/9.png" alt=""><strong class="special">Login/Register</strong> <span class="fa fa-angle-down"></span></a>
 							<ul>
-								<li><a href="login.html" data-loader="show">Login</a></li>
+								<li><a href="/franQrReader" data-loader="show">QR reader 테스트</a></li>
 								<li><a href="signup.html" data-loader="show">Register</a></li>
 								<li><a href="forgot-password.html" data-loader="show">Forgot Password</a></li>
 							</ul>
@@ -223,10 +223,8 @@
 						</div>
 					</div>
 				</div>
-
-				<section class="bal-section container" id="cardList">
-				</section>
-
+				<section class="bal-section container" id="cardList"></section>
+				<button type='button' id='transaction' style='float:right'>직원 정보 조회</button>
 				<footer>
 					<div class="container">
 						<ul>
@@ -251,60 +249,117 @@
 		  	<div class="circle3"></div>
 		</div>
 	</div>
+
 	<!-- JQuery library file. requared all pages -->
 	<script src="/js/jquery-3.2.1.min.js"></script>
+
+	<!-- Swiper JS -->
+    <script src="/js/swiper.min.js"></script>
+
+	 <!-- Initialize Swiper -->
+ 	
+  	<!-- Flot Charts -->
+	<script src="plugins/c3-chart/c3.min.js"></script>
+	<script src="plugins/c3-chart/d3.min.js"></script>
+	<script src="plugins/c3-chart/c3.custom.js"></script>
+  	<!-- Flot Charts -->
+	<script src="plugins/flot/jquery.flot.min.js"></script>
+	<script src="plugins/flot/jquery.flot.time.min.js"></script>
+	<script src="plugins/flot/jquery.flot.pie.min.js"></script>
+	<script src="plugins/flot/jquery.flot.tooltip.min.js"></script>
+	<script src="plugins/flot/jquery.flot.resize.min.js"></script>
+    <!-- Sparkline-->
+    <script src="plugins/jquery-sparkline/jquery.sparkline.js"></script>
+
 	<!-- Template global script file. requared all pages -->
-    <script src="/js/global.script.js"></script>
+	<script src="/js/app-charts.js"></script>
+	<script src="/js/global.script.js"></script>
+
+	<script>
+		var jwtToken = sessionStorage.getItem('jwtToken');
+		console.log(jwtToken);
+
+        var data2;
+
+        fetchUserData();
+
+        function fetchUserData(){
+            $.ajax({
+                url:'http://localhost:3000/approve/enterEmplist',
+                type : 'POST',
+                headers : {
+                    'x-access-token' : jwtToken
+                },
+                success:function(data){
+					
+					console.log("data 받아옴")
+
+                    var buttonHtml = ""
+
+                    $("#cardList").empty()
+
+                      for(var i = 0; i < data.length; i++){
+
+                        
+                        if(data[i].approved == 0){
+                            console.log(data[i])
+                           // buttonHtml = '<button type="button" id="menu"'+i+' onclick="oneclick("'+i+','+data[i].ID+'")>승인버튼</button>'
+                           buttonHtml = '<button type="button" id="menu"'+' onclick="oneclick(\''+data[i].ID+'\')">승인버튼</button>'
+                            
+                        
+                        }
+                        else {
+                            buttonHtml = ""
+                        }
+                        $("#cardList").append(
+                            '<div class="balance-card mb-15">'+
+                                '<div class="d-flex align-items-center">'+
+                            		'<div class="d-flex flex-grow">'+
+                                    	'<div class="mr-auto">' +
+                                            '<p class="g-text mb-10">'+"이름: "+data[i].name+'</h1>'+
+                                            '<p class="g-text mb-10">'+"회사코드: "+data[i].enterpriseCode+'</h1>'+
+                                        	'<p class="g-text mb-10">'+"승인여부: "+data[i].approved+'</p>'+
+                                        '</div>'+
+                            		    '<div class="ml-auto align-self-end">'+
+											buttonHtml+
+                                        '</div>'+
+                                    '</div>'+
+                                '</div>'+
+            	            '</div>'
+                        )
+                    }    
+                }
+            })
+		}
+
+		function oneclick(p){
+
+            console.log(p)
+            var jwtToken = sessionStorage.getItem('jwtToken');
+            fetchUserData2();
+            function fetchUserData2(){
+           
+                $.ajax({
+                 url:'http://localhost:3000/approve/enterApprove',
+                 type : 'POST',
+                 headers : {
+                        'x-access-token' : jwtToken
+                },data : {
+                    
+                    ID : p
+                },
+                success:function(data){
+                    alert("승인완료")
+                    fetchUserData()
+                }
+            })
+		}
+        }
+
+    </script>
+
 </body>
 
-
-<script>
-
-    function getQueryStringObject() {
-
-        var a = window.location.search.substr(1).split('&');
-        if (a == "") return {};
-        var b = {};
-        for (var i = 0; i < a.length; ++i) {
-            var p = a[i].split('=', 2);
-            if (p.length == 1)
-                b[p[0]] = "";
-            else
-                b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
-        }
-        return b;
-    }
-    
-    var qs = getQueryStringObject();
-    var jwtToken = sessionStorage.getItem('jwtToken');
-
-    $.ajax({
-		url:'http://localhost:3000/approve/enterEmplist',
-		type : 'POST',
-		headers : {
-			'x-access-token' : jwtToken
-		},
-		data : {
-            fin_use_num : qs.fin_use_num
-		},
-		success:function(data){
-            for(var i=0; i < data.length; i++){
-                    $("#cardList").append(
-                        '<div class="balance-card mb-15">'+
-                            '<div class="d-flex align-items-center">'+
-                                '<div class="d-flex flex-grow">'+
-                                    '<div class="mr-auto">' +
-                                        '<h1 class="b-val">'+data[i].enterpriseCode+'</h1>'+
-                                        '<p class="g-text mb-10">'+data[i].balance+'</p>'+
-                                        '<p class="g-text mb-10">'+data[i].balance+'</p>'+
-                                        '<p class="g-text mb-10">'+data[i].balance+'</p>'+
-                            '</div>'+
-                       '</div>'+
-                    '</div>'
-                    )
-                }    
-            $("#balanceText").text(data.enterpriseCode);
-		}
-    })
-	</script>
 </html>
+</html>
+

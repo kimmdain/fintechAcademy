@@ -2,11 +2,9 @@
 
 var express = require('express');
 var router = express.Router();
-var auth = require('../lib/auth');
+
 
 var mysql = require('mysql');
-var jwt = require('jsonwebtoken');
-var tokenKey = "fintechAcademy0$1#0@6!";
 
 // my sql 셋팅
 var config = require('../../config/config.json');
@@ -23,6 +21,7 @@ connection.connect();
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
+
 
 router.get('/franSignup', function(req, res){
   res.render('franSignup');

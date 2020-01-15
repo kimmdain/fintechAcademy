@@ -29,7 +29,6 @@ router.get('/login', function(req, res){
 })
 
 router.get('/enterMain', function(req, res){
-  console.log("!!!!!!!")
   res.render('enterMain');
 })
 

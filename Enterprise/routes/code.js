@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var auth = require('../lib/auth');
 
 var mysql = require('mysql');
 var config = require('../../config/config.json');
@@ -16,7 +15,7 @@ connection.connect;
 
 /* GET users listing. */
 
-router.post('/code', auth, function(req,res){  //회사 코드 확인하는 API
+router.post('/code', function(req, auth,res){  //회사 코드 확인하는 API
     //console.log(req.body);
    // var entCode = req.body.entCode;
     var enterData = req.decoded;

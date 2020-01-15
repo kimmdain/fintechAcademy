@@ -1,149 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, user-scalable=0"
-    />
-    <title>Crypto Mobile Template</title>
 
-    <!-- Google font file. If you want you can change. -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,900"
-      rel="stylesheet"
-    />
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+	<title>Crypto Mobile Template</title>
 
-    <!-- Fontawesome font file css -->
-    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
+	<!-- Google font file. If you want you can change. -->
+	<link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,900" rel="stylesheet">
 
-    <!-- Template global css file. Requared all pages -->
-    <link rel="stylesheet" type="text/css" href="/css/global.style.css" />
-  </head>
+	<!-- Fontawesome font file css -->
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
 
-  <body>
-    <div class="wrapper">
-      <div class="nav-menu">
-        <nav class="menu">
-          <!-- Menu navigation start -->
-          <!-- Menu navigation end -->
-        </nav>
-      </div>
-      <div class="wrapper-inline">
-        <!-- Header area start -->
-        <header>
-          <!-- extra class no-background -->
-          <a class="go-back-link" href="javascript:history.back();"
-            ><i class="fa fa-arrow-left"></i
-          ></a>
-          <h1 class="page-title">SIGN UP</h1>
-          <div class="navi-menu-button">
-            <em></em>
-            <em></em>
-            <em></em>
-          </div>
-        </header>
-        <!-- Header area end -->
-        <!-- Page content start -->
-        <main>
-          <div class="container">
-            <div class="form-divider"></div>
-            <div class="form-divider"></div>
-            <div class="form-divider"></div>
-            <div class="form-row-group with-icons">
-              <div class="form-row no-padding">
-                <i class="fa fa-user"></i>
-                <input
-                  type="text"
-                  id="name"
-                  class="form-element"
-                  placeholder="fran name"
-                  value="호박식당"
-                />
-              </div>
-              <div class="form-row no-padding">
-                <i class="fa fa-envelope"></i>
-                <input
-                  type="email"
-                  id="franId"
-                  class="form-element"
-                  placeholder="ID"
-                  value="ga"
-                />
-              </div>
-              <div class="form-row no-padding">
-                <i class="fa fa-lock"></i>
-                <input
-                  type="password"
-                  id="franPw"
-                  class="form-element"
-                  placeholder="Password"
-                  value="123456"
-                />
-              </div>
-            </div>
-            <div class="form-divider"></div>
-            <div class="form-row">
-              <button
-                type="button"
-                id="signupBtn"
-                class="button circle block orange"
-              >
-                Sign Up
-              </button>
-            </div>
-            <div class="form-row txt-center mt-15">
-              Already have an account?
-              <a href="franLogin" data-loader="show">Login</a>
-            </div>
-          </div>
-        </main>
-        <!-- Page content end -->
-      </div>
-    </div>
+	<!-- Template global css file. Requared all pages -->
+	<link rel="stylesheet" type="text/css" href="css/global.style.css">
+</head>
 
-    <!--Page loader DOM Elements. Requared all pages-->
-    <div class="sweet-loader">
-      <div class="box">
-        <div class="circle1"></div>
-        <div class="circle2"></div>
-        <div class="circle3"></div>
-      </div>
-    </div>
+<body>
+	
+	<div class="wrapper">
+		<div class="nav-menu">
+			<nav class="menu">				
+				<!-- Menu navigation start -->				
+			<!-- Menu navigation end -->
+			</nav>
+		</div>
+		<div class="wrapper-inline">
+			<!-- Header area start -->
+			<header> <!-- extra class no-background -->
+				<a class="go-back-link" href="javascript:history.back();"><i class="fa fa-arrow-left"></i></a>
+				<h1 class="page-title">SIGN UP</h1>
+				<div class="navi-menu-button">
+					<em></em>
+					<em></em>
+					<em></em>
+				</div>
+			</header>
+			<!-- Header area end -->
+			<!-- Page content start -->
+			<main>
+				<div class="container">
+					<div class="form-divider"></div>
+					<div class="form-divider"></div>
+					<div class="form-divider"></div>
+					<div class="form-row-group with-icons">
+                        <div class="form-row no-padding">
+							<i class="fa fa-user"></i>
+							<input type="text" id="name" class="form-element" placeholder="fran name" value="john doe">
+						</div>
+						<div class="form-row no-padding">
+							<i class="fa fa-envelope"></i>
+							<input type="email" id="franId" class="form-element" placeholder="ID" value="jd">
+						</div>
+						<div class="form-row no-padding">
+							<i class="fa fa-lock"></i>
+							<input type="password" id="franPw" class="form-element" placeholder="Password" value="123456">
+						</div>											
+					</div>
+					<div class="form-divider"></div>
+					<div class="form-row">
+                        <button type='button' id="signupBtn" class="button circle block orange">Sign Up</button>
+                    </div>
+					<div class="form-row txt-center mt-15">
+						Already have an account? <a href="franLogin" data-loader="show">Login</a>
+					</div>
+				</div>
+			</main>
+			<!-- Page content end -->
+		</div>
+	</div>
 
-    <!-- JQuery library file. requared all pages -->
-    <script src="/js/jquery-3.2.1.min.js"></script>
 
-    <!-- Template global script file. requared all pages -->
-    <script src="/js/global.script.js"></script>
+	<!--Page loader DOM Elements. Requared all pages-->
+	<div class="sweet-loader">
+		<div class="box">
+		  	<div class="circle1"></div>
+		  	<div class="circle2"></div>
+		  	<div class="circle3"></div>
+		</div>
+	</div>
 
+	<!-- JQuery library file. requared all pages -->
+	<script src="js/jquery-3.2.1.min.js"></script>
+
+	<!-- Template global script file. requared all pages -->
+    <script src="js/global.script.js"></script>
+    
     <script>
-      $('#signupBtn').click(function() {
-        var name = $('#name').val();
-        var ID = $('#franId').val();
-        var password = $('#franPw').val();
+        $("#signupBtn").click(function(){
+            var name = $("#name").val();
+            var ID = $("#franId").val();
+            var password = $("#franPw").val();
 
-        alert(name + ' ' + ID + ' ' + password);
+			alert(name + ' ' + ID + ' ' + password);
+			
+            $.ajax({
+                url:'http://localhost:3000/franSignup',
+                type : 'POST',
+                data : {
+                    name : name,
+                    franId : ID,
+                    franPw : password                    
+                },
 
-        $.ajax({
-          url: 'http://localhost:3000/users/franSignup',
-          type: 'POST',
-          data: {
-            name: name,
-            franId: ID,
-            franPw: password
-          },
-
-          // data 값에 server.js의 app.post('/user', function(req, res)의
-          // response로 json 형태로 넘어온 1 값이 저장됨
-          success: function(data) {
-            if (data == 1) {
-              alert('가입 완료');
-              window.location = '/users/franLogin';
-            }
-          }
-        });
-      });
+                // data 값에 server.js의 app.post('/user', function(req, res)의
+                // response로 json 형태로 넘어온 1 값이 저장됨
+                success:function(data){
+                    if(data == 1){
+                       alert("가입 완료");
+                       window.location = "/franLogin"
+                    }
+                }
+            })
+        })
     </script>
-  </body>
+
+	
+</body>
+
 </html>
