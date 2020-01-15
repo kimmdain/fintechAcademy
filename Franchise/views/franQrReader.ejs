@@ -153,30 +153,27 @@
         // 이벤트 발생 부분
         console.log(content); // content 는 fin_use_num임
 		var qs = content;
+		var fun = '199160569057881529753629'; // 핀테크 유즈넘버 일단 임의로 테스트용
 		
 		// jd, 111 이런 방식으로 나옴
 		var jbString = content;
 		var jbSplit = jbString.split(',');
 		// jbSplit[0] = 이름
 		// jbSplit[1] = 회사번호
-		
-		// for ( var i in jbSplit ) {
-		// 	document.write( '<p>hihi' + jbSplit[i] + 'hihi</p>' );
-		// }
-
 
 		var jwtToken = sessionStorage.getItem('jwtToken')
 		console.log(content);
 		
         $.ajax({
-		url:'http://localhost:3000/franMain',
+		url:'http://localhost:3000/withdrawQr',
 		type : 'POST',
 		headers : {
 			'x-access-token' : jwtToken     // 필요한가?
 		},
 		data : {
-            fin_use_num : qs
-            
+			fin_use_num : fun,
+			name : jbSplit[0],
+			enterpriseCode : jbSplit[1]
 		},
 		success:function(data){
             console.log(data);
