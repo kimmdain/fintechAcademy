@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
 var auth = require('../lib/auth');
+var request = require('request');
 
 // my sql 셋팅
 var config = require('../../config/config.json');
