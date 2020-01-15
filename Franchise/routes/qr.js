@@ -20,23 +20,28 @@ router.get('/franQrReader', function(req, res) {
 // 출금이체 API
 router.post('/withdrawQr', auth, function(req, res) {
   var finusenum = req.body.fin_use_num;
-  var userId = req.decoded.userId;
+  var franId = req.decoded.userId;
+
   var name = req.body.name; //가맹점이름
   var enterpriseCode = req.body.enterpriseCode; //가맹점코드
 
+  console.log(name);
+  console.log(enterpriseCode);
+
   var countnum = Math.floor(Math.random() * 1000000000) + 1;
   var transId = 'T991605690U' + countnum;
-  connection.query('SELECT * FROM user WHERE id = ?', [userId], function(
+  connection.query('SELECT * FROM fintech WHERE companyId = ?', [name], function(
     error,
     results,
     fields
   ) {
+    console.log(results);
     if (error) throw error;
     var option = {
       method: 'post',
       url: 'https://testapi.openbanking.or.kr/v2.0/transfer/withdraw/fin_num',
       headers: {
-        Authorization: 'Bearer ' + results[0].accesstoken
+        Authorization: 'Bearer ' + results[0].accessToken
       },
       json: {
         bank_tran_id: transId,
