@@ -134,7 +134,8 @@
             } else if (data == 1) {
               alert('no approved');
             } else {
-              window.location = '/franMenuedit';
+				sessionStorage.setItem('jwtToken', data); // 추가
+              window.location = '/franMain';
             }
           }
         });
