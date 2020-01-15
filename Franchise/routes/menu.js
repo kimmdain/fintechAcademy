@@ -20,12 +20,27 @@ router.post('/franMenuInsert', auth, function(req, res) {
   console.log(req.body);
 
   var userData = req.decoded;
-  var ID = userData.franId;
-  var PW = userData.franPw;
+  var ID = userData.userId;
+  var PW = userData.userPw;
+  console.log(ID);
+  console.log(PW);
 
   var name = req.body.name;
   var menu = req.body.menu;
   var price = req.body.price;
+
+  var sql2 =
+    'SELECT * FROM fintech.franchise WHERE franId = ?';
+  connection.query(sql2, [ID], function(
+    error,
+    results,
+    fields
+  ) {
+    if (error) throw error;
+    console.log('The result is: ', results);
+    console.log('sql is ', this.sql);
+    res.json(1);
+  });
 
   var sql =
     'INSERT INTO fintech.franchise (name, franId, franPw, menu, price) VALUES (?, ?, ?, ?, ?)';

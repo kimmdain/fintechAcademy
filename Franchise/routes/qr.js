@@ -31,7 +31,7 @@ router.post('/withdrawQr', auth, function(req, res) {
 
   var countnum = Math.floor(Math.random() * 1000000000) + 1;
   var transId = 'T991605690U' + countnum;
-  connection.query('SELECT * FROM fintech WHERE companyId = ?', [name], function(
+  connection.query('SELECT * FROM fintech WHERE companyId = ?', [enterpriseCode], function(
     error,
     results,
     fields
@@ -71,6 +71,7 @@ router.post('/withdrawQr', auth, function(req, res) {
       var resultObject = body;
       if (resultObject.rsp_code == 'A0000') {
         res.json(1);
+        
       } else {
         res.json(resultObject.rsp_code);
       }
