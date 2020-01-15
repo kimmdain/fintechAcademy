@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=0"
+    />
+    <title>가맹점</title>
+
+    <!-- Google font file. If you want you can change. -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,900"
+      rel="stylesheet"
+    />
+
+    <!-- Fontawesome font file css -->
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
+
+    <!-- Template global css file. Requared all pages -->
+    <link rel="stylesheet" type="text/css" href="/css/global.style.css" />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="nav-menu">
+        <nav class="menu">
+          <!-- Menu navigation start -->
+          <!-- Menu navigation end -->
+        </nav>
+      </div>
+      <div class="wrapper-inline">
+        <!-- Header area start -->
+        <header>
+          <!-- extra class no-background -->
+          <a class="go-back-link" href="javascript:history.back();"
+            ><i class="fa fa-arrow-left"></i
+          ></a>
+          <h1 class="page-title">메뉴 입력 및 수정</h1>
+          <div class="navi-menu-button">
+            <em></em>
+            <em></em>
+            <em></em>
+          </div>
+        </header>
+        <!-- Header area end -->
+        <!-- Page content start -->
+        <main>
+          <div class="container">
+            <div class="form-divider"></div>
+            <div class="form-divider"></div>
+            <div class="form-divider"></div>
+            <div class="form-row-group with-icons">
+              <div class="form-row no-padding">
+                <i class="fa fa-user"></i>
+                <input
+                  type="text"
+                  id="name"
+                  class="form-element"
+                  placeholder="가맹점 이름"
+                  value="호박식당"
+                />
+              </div>
+              <div class="form-row no-padding">
+                <i class="fa fa-user"></i>
+                <input
+                  type="text"
+                  id="foodName"
+                  class="form-element"
+                  placeholder="음식 이름"
+                  value="부대찌게"
+                />
+              </div>
+              <div class="form-row no-padding">
+                <i class="fa fa-user"></i>
+                <input
+                  type="text"
+                  id="price"
+                  class="form-element"
+                  placeholder="음식 가격"
+                  value="6000"
+                />
+              </div>
+            </div>
+            <div class="form-divider"></div>
+            <div class="form-row">
+              <button
+                type="button"
+                id="registBtn"
+                class="button circle block orange"
+              >
+                등록하기
+              </button>
+            </div>
+            <div class="form-divider"></div>
+            <div class="form-divider"></div>
+            <div class="form-divider"></div>
+            <h3>
+              <center>등록된 메뉴</center>
+            </h3>
+            <table id="menuList"></table>
+          </div>
+        </main>
+        <!-- Page content end -->
+      </div>
+    </div>
+
+    <!--Page loader DOM Elements. Requared all pages-->
+    <div class="sweet-loader">
+      <div class="box">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+      </div>
+    </div>
+
+    <!-- JQuery library file. requared all pages -->
+    <script src="/js/jquery-3.2.1.min.js"></script>
+
+    <!-- Template global script file. requared all pages -->
+    <script src="/js/global.script.js"></script>
+
+    <script>
+      // 메뉴리스트 받아와 뿌리는 함수
+      function getMenuList() {
+        $.ajax({
+          url: 'http://localhost:3000/franMenuList',
+          type: 'GET',
+          success: function(data) {
+            alert('메뉴리스트 받아옴');
+            console.log(data);
+            var menuCnt = data.length;
+            if (menuCnt >= 1) {
+              for (var i = 0; i < data.length; i++) {
+                var element = data[i];
+                $('#menuList').append(
+                  '<tr><td>' + (i + 1) + '</td><td>' + element.x + '</td></tr>'
+                );
+              }
+            }
+          }
+        });
+      }
+
+      // 등록하기 버튼 클릭 시 등록하는 이벤트 처리
+      $('#registBtn').click(function() {
+        var name = $('#name').val();
+        var foodname = $('#foodName').val();
+        var price = $('#price').val();
+
+        alert(name + ' ' + foodname + ' ' + price);
+
+        $.ajax({
+          url: 'http://localhost:3000/menu/franMenuInsert',
+          type: 'POST',
+          data: {
+            name: name,
+            menu: foodname,
+            price: price
+          },
+
+          // data 값에 server.js의 app.post('/user', function(req, res)의
+          // response로 json 형태로 넘어온 1 값이 저장됨
+          success: function(data) {
+            alert('호호 성공');
+            if (data == 1) {
+              alert('등록 완료');
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

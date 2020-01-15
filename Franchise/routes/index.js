@@ -14,17 +14,17 @@ var connection = mysql.createConnection({
 });
 connection.connect();
 
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/franMain', function(req, res){
+router.get('/franMain', function(req, res) {
   res.render('franMain');
-})
+});
 
+router.get('/franMenuedit', (req, res) => {
+  res.render('franMenuedit');
+});
 
 module.exports = router;
-
-
