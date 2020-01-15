@@ -58,7 +58,6 @@
                   id="name"
                   class="form-element"
                   placeholder="가맹점 이름"
-                  value="호박식당"
                 />
               </div>
               <div class="form-row no-padding">
@@ -68,7 +67,6 @@
                   id="foodName"
                   class="form-element"
                   placeholder="음식 이름"
-                  value="부대찌게"
                 />
               </div>
               <div class="form-row no-padding">
@@ -78,7 +76,6 @@
                   id="price"
                   class="form-element"
                   placeholder="음식 가격"
-                  value="6000"
                 />
               </div>
             </div>
@@ -98,7 +95,7 @@
             <h3>
               <center>등록된 메뉴</center>
             </h3>
-            <table id="menuList"></table>
+            <section class="bal-section container" id="menuList"></section>
           </div>
         </main>
         <!-- Page content end -->
@@ -121,20 +118,47 @@
     <script src="/js/global.script.js"></script>
 
     <script>
+      // 토큰 받아오기
+      var jwtToken = sessionStorage.getItem('jwtToken');
+      console.log('Token' + jwtToken);
+
       // 메뉴리스트 받아와 뿌리는 함수
       function getMenuList() {
         $.ajax({
-          url: 'http://localhost:3000/franMenuList',
-          type: 'GET',
+          url: 'http://localhost:3000/users/menu',
+          type: 'POST',
+          headers: {
+            'x-access-token': jwtToken
+          },
           success: function(data) {
-            alert('메뉴리스트 받아옴');
             console.log(data);
             var menuCnt = data.length;
+            console.log(menuCnt);
             if (menuCnt >= 1) {
               for (var i = 0; i < data.length; i++) {
                 var element = data[i];
+                console.log(element);
                 $('#menuList').append(
-                  '<tr><td>' + (i + 1) + '</td><td>' + element.x + '</td></tr>'
+                  '<div class="balance-card mb-15">' +
+                    '<div class="d-flex align-items-center">' +
+                    '<div class="d-flex flex-grow">' +
+                    '<div class="mr-auto">' +
+                    '<h1 class="b-val">' +
+                    element.menu +
+                    '</h1>' +
+                    '<p class="g-text mb-10">' +
+                    element.price +
+                    '</p>' +
+                    '</div>' +
+                    '<div class="ml-auto align-self-end">' +
+                    '<button type="button" id="menu"' +
+                    ' onclick="editMenu(' +
+                    i +
+                    ')">수정하기</button>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>'
                 );
               }
             }
@@ -142,8 +166,12 @@
         });
       }
 
-      // 등록하기 버튼 클릭 시 등록하는 이벤트 처리
-      $('#registBtn').click(function() {
+      function editMenu() {
+        alert('수정하기');
+      }
+
+      // 음식 등록하는 이벤트 처리
+      function insertMenu() {
         var name = $('#name').val();
         var foodname = $('#foodName').val();
         var price = $('#price').val();
@@ -153,6 +181,9 @@
         $.ajax({
           url: 'http://localhost:3000/menu/franMenuInsert',
           type: 'POST',
+          headers: {
+            'x-access-token': jwtToken
+          },
           data: {
             name: name,
             menu: foodname,
@@ -162,12 +193,17 @@
           // data 값에 server.js의 app.post('/user', function(req, res)의
           // response로 json 형태로 넘어온 1 값이 저장됨
           success: function(data) {
-            alert('호호 성공');
             if (data == 1) {
               alert('등록 완료');
             }
           }
         });
+      }
+
+      getMenuList();
+      // 등록하기 버튼 클릭 시 등록하는 이벤트 처리
+      $('#registBtn').click(function() {
+        insertMenu();
       });
     </script>
   </body>
