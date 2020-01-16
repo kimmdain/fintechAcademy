@@ -228,7 +228,7 @@
 				<button type='button' id='menu'>메뉴 수정</button>
 				<button type='button' id='transaction'>거래 내역 조회</button>
 				<button type='button' id='payment' style='float:right' onclick="gotoQrReader()">결제하기</button>
-				<text id='chosenMenu' style='float:right' value='선택한 메뉴 및 개수'></text>
+				<div type='text' id='chosenMenu' style='float:right' value=''></div>
 
 				<footer>
 					<div class="container">
@@ -284,7 +284,8 @@
 		var jwtToken = sessionStorage.getItem('jwtToken');
 
 		var cartSession = [{}];		// { menu : pizza, price : 15000, count : 1 }
-		// var cartSs = [[]]
+		
+		var chosenMenu = '';
 
         fetchUserData();
         function fetchUserData(){
@@ -323,13 +324,6 @@
                         )
 					} 
 					console.log(JSON.stringify(cartSession));
-					// for(var i = 0; i < cartSession.length; i++){
-					// 	cartSs[i][0] = cartSession[i].menu;
-					// 	cartSs[i][1] = cartSession[i].price;
-					// 	cartSs[i][2] = cartSession[i].click;
-					// }
-					// console.log(cartSs);
-					//console.log(objectToQuerystring(cartSession));
 					
 					sessionStorage.setItem('cartSession', JSON.stringify(cartSession));   
                 }
@@ -339,14 +333,26 @@
 		function plusCart(p){
 			cartSession[p].click++;
 			console.log(cartSession)
-			sessionStorage.setItem('cartSession', JSON.stringify(cartSession));;			
+			sessionStorage.setItem('cartSession', JSON.stringify(cartSession));
+			chosenMenu = '';
+			
+			for(var i = 0; i < cartSession.length; i++){
+				chosenMenu += cartSession[i].menu + ": " + cartSession[i].click + "   "
+			}
+			document.getElementById("chosenMenu").innerHTML = chosenMenu;
 		}
 
 		function minusCart(p){
 			cartSession[p].click--;
 			if(cartSession[p].click < 0) cartSession[p].click = 0;
 			console.log(cartSession)
-			sessionStorage.setItem('cartSession', JSON.stringify(cartSession));;
+			sessionStorage.setItem('cartSession', JSON.stringify(cartSession));
+			chosenMenu = '';
+			
+			for(var i = 0; i < cartSession.length; i++){
+				chosenMenu += cartSession[i].menu + " " + cartSession[i].click + "   "
+			}
+			document.getElementById("chosenMenu").innerHTML = chosenMenu;
 		}
 
 		function gotoQrReader(){
