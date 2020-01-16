@@ -93,8 +93,8 @@
 	}
 	var qs = getQueryStringObject();
 	
-	if (qs.balance <= 5000){
-		alert("잔액이 5000원 이하입니다.");
+	if (qs.balance > 120000){
+		alert("한도 초과");
 	}
 	else {
 		new QRCode(document.getElementById("qrcode"), qs.ID + "," + qs.entCode);

@@ -310,23 +310,23 @@
 					console.log(cartSession);
 
 					if(data[0].menu != null){
-						for(var i = 0; i < data.length; i++){
-                        $("#cardList").append(
-                            '<div class="balance-card mb-15">'+
-                                '<div class="d-flex align-items-center">'+
-                            		'<div class="d-flex flex-grow">'+
-                                    	'<div class="mr-auto">' +
-                                            '<h1 class="b-val">'+data[i].menu+'</h1>'+
-                                        	'<p class="g-text mb-10">'+data[i].price+'</p>'+
-                                        '</div>'+
-										'<div class="ml-auto align-self-end">'+
-											'<button type="button" id="menu"'+i+' onclick="minusCart('+i+')">장바구니에서 빼기</button>'+
-											'<button type="button" id="menu"'+i+' onclick="plusCart('+i+')">장바구니 담기</button>'+											
-                                        '</div>'+
-                                    '</div>'+
-                                '</div>'+
-            	            '</div>'
-                        )
+						for(var i = 0; i < data.length; i++){							
+							$("#cardList").append(
+								'<div class="balance-card mb-15">'+
+									'<div class="d-flex align-items-center">'+
+										'<div class="d-flex flex-grow">'+
+											'<div class="mr-auto">' +
+												'<h1 class="b-val">'+data[i].menu+'</h1>'+
+												'<p class="g-text mb-10">'+data[i].price+'</p>'+
+											'</div>'+
+											'<div class="ml-auto align-self-end">'+
+												'<button type="button" id="menu"'+i+' onclick="minusCart('+i+')">장바구니에서 빼기</button>'+
+												'<button type="button" id="menu"'+i+' onclick="plusCart('+i+')">장바구니 담기</button>'+											
+											'</div>'+
+										'</div>'+
+									'</div>'+
+								'</div>'
+							)							
 					} 
 					console.log(JSON.stringify(cartSession));
 					

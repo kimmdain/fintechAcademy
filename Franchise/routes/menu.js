@@ -32,6 +32,8 @@ router.post('/franMenuInsert', auth, function(req, res) {
     'INSERT INTO fintech.franchise (franchiseCode, name, franId, franPw, menu, price) VALUES (?,?, ?, ?, ?, ?)';
   var sql2 =
     'SELECT franchiseCode, name FROM fintech.franchise WHERE franId = ?';
+  var sql3 = 
+    'DELETE FROM franchise WHERE menu IS NULL'
   connection.query(sql2, ID, function(error, results, fields) {
     if (error) throw error;
     var franCode = results[0].franchiseCode;
@@ -50,6 +52,9 @@ router.post('/franMenuInsert', auth, function(req, res) {
       res.json(1);
     });
   });
+  connection.query(sql3, function(error, results, fields) {
+    if (error) throw error;
+  })
 });
 
 // 메뉴 전체 조회 API
