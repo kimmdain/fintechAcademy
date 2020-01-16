@@ -217,7 +217,7 @@
 
 				<div class="dash-balance">
 					<div class="dash-content relative">
-						<h3 class="w-text">Dashboard</h3>
+						<h3 class="w-text">메뉴판</h3>
 						<div class="notification">
 							<a href=""><i class="fa fa-plus"></i></a>
 						</div>
@@ -230,17 +230,17 @@
 				<div class="form-divider"></div>
 				<div class="form-divider"></div>
 				<section class="bal-section container" id="cardList"></section>
-				<button type='button' id='menu' onclick="gotoMenuedit()">메뉴 수정</button>
-				<button type='button' id='transaction' onclick="gotoTransaction()">거래 내역 조회</button>
-				<button type='button' id='payment' style='float:right' onclick="gotoQrReader()">결제하기</button>
-				<div type='text' id='chosenMenu' style='float:right' value=''></div>
 				<footer>
+				<ul>
+				<li><button type='button' style='float:right' class="button circle block blue mb-15" id='menu' onclick="gotoMenuedit()">메뉴 수정</button></li>
+				<li><button type='button' style='float:right' class="button circle block blue mb-15" id='transaction' onclick="gotoTransaction()">거래 내역 조회</button></li>
+				</ul>
+				<div type='text' id='chosenMenu' style='float:right' value=''></div>
+				
 					<div class="container">
 						<ul>
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-google"></i></a></li>
-							<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+							<li><button type='button' class="button circle block red" id='payment' style='float:right' onclick="gotoQrReader()">결제하기</button></li>
+							
 						</ul>
 						<p>Copyright © All Right Reserved</p>
 					</div>
@@ -320,8 +320,8 @@
 												'<p class="g-text mb-10">'+data[i].price+'</p>'+
 											'</div>'+
 											'<div class="ml-auto align-self-end">'+
-												'<button type="button" id="menu"'+i+' onclick="minusCart('+i+')">장바구니에서 빼기</button>'+
-												'<button type="button" id="menu"'+i+' onclick="plusCart('+i+')">장바구니 담기</button>'+											
+												'<button class="button circle block blue mb-15" type="button" id="menu"'+i+' onclick="minusCart('+i+')">장바구니에서 빼기</button>'+
+												'<button class="button circle block blue mb-15" type="button" id="menu"'+i+' onclick="plusCart('+i+')">장바구니 담기</button>'+											
 											'</div>'+
 										'</div>'+
 									'</div>'+
