@@ -43,16 +43,11 @@
 				<div class="container">
 					<div class="form-divider"></div>
 					<div class="form-divider"></div>					
-					<div class="form-divider"></div>
 
 					<div class="form-row-group with-icons">
                         <div class="form-row no-padding">
 							<i class="fa fa-envelope"></i>
-							<input type="text" id="entCode" class="form-element" placeholder="EnterpriseCode">
-						</div>
-                        <div class="form-row no-padding">
-							<i class="fa fa-envelope"></i>
-							<input type="text" id="userID" class="form-element" placeholder="UserID">
+							<input type="text" id="userID" class="form-element" placeholder="enterpriseID">
 						</div>
 						<div class="form-row no-padding">
 							<i class="fa fa-lock"></i>
@@ -98,7 +93,6 @@
 
     <script>
         $("#loginBtn").click(function(){
-            var entCode = $("#entCode").val();
             var ID = $("#userID").val();
             var password = $("#userPassword").val();
             
@@ -106,7 +100,6 @@
                 url:'http://localhost:3000/users/login',
                 type : 'POST',
                 data : {  
-                    entCode : entCode,  
                     ID : ID,                
                     password : password              
                 },
@@ -115,7 +108,6 @@
                        alert("wrong password");
                     }
                     else{
-						console.log(data);
 						sessionStorage.setItem('jwtToken', data);
                         window.location = "/users/enterMain"
 					}
