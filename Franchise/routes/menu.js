@@ -29,30 +29,25 @@ router.post('/franMenuInsert', auth, function(req, res) {
   var menu = req.body.menu;
   var price = req.body.price;
 
-  var sql2 =
-    'SELECT * FROM fintech.franchise WHERE franId = ?';
-  connection.query(sql2, [ID], function(
-    error,
-    results,
-    fields
-  ) {
+  var sql1 =
+    'INSERT INTO fintech.franchise (franchiseCode, name, franId, franPw, menu, price) VALUES (?,?, ?, ?, ?, ?)';
+  var sql2 = 'SELECT franchiseCode FROM fintech.franchise WHERE franId = ?';
+  connection.query(sql2, ID, function(error, results, fields) {
     if (error) throw error;
-    console.log('The result is: ', results);
-    console.log('sql is ', this.sql);
-    res.json(1);
-  });
+    var franCode = results[0].franchiseCode;
+    console.log('franCode' + franCode);
 
-  var sql =
-    'INSERT INTO fintech.franchise (name, franId, franPw, menu, price) VALUES (?, ?, ?, ?, ?)';
-  connection.query(sql, [name, ID, PW, menu, price], function(
-    error,
-    results,
-    fields
-  ) {
-    if (error) throw error;
-    console.log('The result is: ', results);
-    console.log('sql is ', this.sql);
-    res.json(1);
+    // franID에 해당하는 가맹점의 코드를 불러와서 함께 DB에 insert
+    connection.query(sql1, [franCode, name, ID, PW, menu, price], function(
+      error,
+      results,
+      fields
+    ) {
+      if (error) throw error;
+      console.log('The result is: ', results);
+      console.log('sql is ', this.sql);
+      res.json(1);
+    });
   });
 });
 
