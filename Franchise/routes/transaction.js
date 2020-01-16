@@ -15,6 +15,28 @@ var connection = mysql.createConnection({
 connection.connect;
 
 //get 필요
+router.get('/franTransaction', (req, res) => {
+  res.render('franTransaction');
+});
+
+// transaction 데이터 베이스 조회해서 거래내역 확인
+router.post('/franTransaction', auth, (req, res) => {
+  var userData = req.decoded;
+
+  var sql =
+    'SELECT distinct enterprise.enterpriseID,  employee.name emp_name,franchise.name fran_name,transaction.menu, transaction.price FROM enterprise, transaction,franchise,employee WHERE transaction.enterpriseCode=enterprise.enterpriseCode and transaction.employID=employee.ID and franchise.franId=?';
+
+  connection.query(sql, [userData.userId], (err, results) => {
+    if (err) {
+      console.log(err);
+      throw err;
+    } else {
+      console.log(results);
+
+      res.json(results);
+    }
+  });
+});
 
 router.post('/transaction', auth, function(req, res) {
   //회사 거래내역조회
