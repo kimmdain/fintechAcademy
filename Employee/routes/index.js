@@ -40,7 +40,7 @@ router.post('/empSignup', function(req, res) {
   var ID = req.body.ID;
   var PW = req.body.password;
   var sql =
-    'INSERT INTO fintech.employee (enterpriseCode, name, ID, PW) VALUES (?, ?, ?, ?)';
+    'INSERT INTO fintech.employee (enterpriseCode, name, ID, PW, balance) VALUES (?, ?, ?, ?,0)';
   connection.query(sql, [entCode, name, ID, PW], function(
     error,
     results,
