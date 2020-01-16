@@ -39,6 +39,12 @@ router.post('/franSignup', function(req, res) {
   var name = req.body.name;
   var ID = req.body.franId;
   var PW = req.body.franPw;
+
+  if(ID=='' || PW==''){
+    console.log("또잉");
+    res.json(2);
+  }
+  else {
   var CODE = Math.floor(Math.random() * 100) + 1; // 가맹점 코드
 
   var sql = "SELECT * FROM fintech.franchise WHERE franId = ?";
@@ -61,6 +67,7 @@ router.post('/franSignup', function(req, res) {
     });
     }
   })
+  }
 });
 
 // router.post('/franLogin', function(req, res){

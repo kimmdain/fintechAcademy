@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, user-scalable=0"
     />
-    <title>Crypto Mobile Template</title>
+    <title>가맹점의 pay's book</title>
 
     <!-- Google font file. If you want you can change. -->
     <link
@@ -58,7 +58,7 @@
                   id="name"
                   class="form-element"
                   placeholder="fran name"
-                  value="호박식당"
+                  
                 />
               </div>
               <div class="form-row no-padding">
@@ -68,7 +68,7 @@
                   id="franId"
                   class="form-element"
                   placeholder="ID"
-                  value="ga"
+                  
                 />
               </div>
               <div class="form-row no-padding">
@@ -78,7 +78,7 @@
                   id="franPw"
                   class="form-element"
                   placeholder="Password"
-                  value="123456"
+                  
                 />
               </div>
             </div>
@@ -123,7 +123,7 @@
         var ID = $('#franId').val();
         var password = $('#franPw').val();
 
-        alert(name + ' ' + ID + ' ' + password);
+        //alert(name + ' ' + ID + ' ' + password);
 
         $.ajax({
           url: 'http://localhost:3000/users/franSignup',
@@ -138,12 +138,16 @@
           // response로 json 형태로 넘어온 1 값이 저장됨
           success: function(data) {
             if (data == 1) {
-              alert('가입 완료');
+              alert('가입 완료되었습니다.');
               window.location = '/users/franLogin';
-            }else if(data == 0){
-              alert('아이디 중복')
-            }
-          }
+              }else if(data == 0){
+              
+              alert("아이디가 중복됩니다.");
+              }
+              else if(data==2){
+                alert("내용을 입력하세요.")
+              }
+              }
         });
       });
     </script>
