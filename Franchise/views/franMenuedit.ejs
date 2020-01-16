@@ -55,15 +55,6 @@
                 <i class="fa fa-user"></i>
                 <input
                   type="text"
-                  id="name"
-                  class="form-element"
-                  placeholder="가맹점 이름"
-                />
-              </div>
-              <div class="form-row no-padding">
-                <i class="fa fa-user"></i>
-                <input
-                  type="text"
                   id="foodName"
                   class="form-element"
                   placeholder="음식 이름"
@@ -185,11 +176,10 @@
 
       // 음식 등록하는 이벤트 처리
       function insertMenu() {
-        var name = $('#name').val();
         var foodname = $('#foodName').val();
         var price = $('#price').val();
 
-        alert(name + ' ' + foodname + ' ' + price);
+        alert(foodname + ' ' + price);
 
         $.ajax({
           url: 'http://localhost:3000/menu/franMenuInsert',
@@ -198,7 +188,6 @@
             'x-access-token': jwtToken
           },
           data: {
-            name: name,
             menu: foodname,
             price: price
           },

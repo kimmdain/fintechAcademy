@@ -25,20 +25,21 @@ router.post('/franMenuInsert', auth, function(req, res) {
   console.log(ID);
   console.log(PW);
 
-  var name = req.body.name;
   var menu = req.body.menu;
   var price = req.body.price;
 
   var sql1 =
     'INSERT INTO fintech.franchise (franchiseCode, name, franId, franPw, menu, price) VALUES (?,?, ?, ?, ?, ?)';
-  var sql2 = 'SELECT franchiseCode FROM fintech.franchise WHERE franId = ?';
+  var sql2 =
+    'SELECT franchiseCode, name FROM fintech.franchise WHERE franId = ?';
   connection.query(sql2, ID, function(error, results, fields) {
     if (error) throw error;
     var franCode = results[0].franchiseCode;
+    var franName = results[0].name;
     console.log('franCode' + franCode);
 
     // franID에 해당하는 가맹점의 코드를 불러와서 함께 DB에 insert
-    connection.query(sql1, [franCode, name, ID, PW, menu, price], function(
+    connection.query(sql1, [franCode, franName, ID, PW, menu, price], function(
       error,
       results,
       fields
