@@ -225,8 +225,8 @@
 				</div>
 				
 				<section class="bal-section container" id="cardList"></section>
-				<button type='button' id='menu'>메뉴 수정</button>
-				<button type='button' id='transaction'>거래 내역 조회</button>
+				<button type='button' id='menu' onclick="gotoMenuedit()">메뉴 수정</button>
+				<button type='button' id='transaction' onclick="gotoTransaction()">거래 내역 조회</button>
 				<button type='button' id='payment' style='float:right' onclick="gotoQrReader()">결제하기</button>
 				<div type='text' id='chosenMenu' style='float:right' value=''></div>
 
@@ -357,7 +357,15 @@
 
 		function gotoQrReader(){
 			location.href = "/qr/franQrReader";
-		}		
+		}
+
+		function gotoMenuedit(){
+			location.href = "/franMenuedit";
+		}
+
+		function gotoTransaction(){
+			location.href = "/transaction/franTransaction";
+		}
 
     </script>
 
