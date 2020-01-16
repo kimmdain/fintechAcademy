@@ -126,9 +126,9 @@ router.post('/withdrawQr', auth, function(req, res) {
     });
   });
   
-  router.post('/isPay1', auth, function(req, res) {  //isPay가 0인 id를 뽑는 API
+  router.post('/isPay', auth, function(req, res) {  //isPay가 0인 id를 뽑는 API
 
-    var sql ="select id from transaction WHERE isPay =0";   
+    var sql ="update transaction set isPay=1 where id in (select t.id from (select id from transaction where isPay=0) as t)";   
     
     connection.query(sql, function (error, results, fields) {
         if (error) {
@@ -141,21 +141,21 @@ router.post('/withdrawQr', auth, function(req, res) {
     });
   })
 
-  router.post('/isPay2', auth, function(req, res) {  //isPay가 0인 id의 isPay를 1로 세팅하는 API 
+//   router.post('/isPay2', auth, function(req, res) {  //isPay가 0인 id의 isPay를 1로 세팅하는 API 
 
-    var isPay_id = req.body.id;
-    var sql ="UPDATE transaction SET isPay=1 WHERE id = ?";
+//     var isPay_id = req.body.id;
+//     var sql ="UPDATE transaction SET isPay=1 WHERE id = ?";
     
-    connection.query(sql, [isPay_id], function (error, results, fields) {
-        if (error) {
-            console.error(error);
-            throw error;
-        }else {
-            console.log('sql is ', this.sql);
-            res.json(results);
-        }
-    });
-  })
+//     connection.query(sql, [isPay_id], function (error, results, fields) {
+//         if (error) {
+//             console.error(error);
+//             throw error;
+//         }else {
+//             console.log('sql is ', this.sql);
+//             res.json(results);
+//         }
+//     });
+//   })
 
 
   module.exports = router;
