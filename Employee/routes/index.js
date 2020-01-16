@@ -39,19 +39,43 @@ router.post('/empSignup', function(req, res) {
   var name = req.body.name;
   var ID = req.body.ID;
   var PW = req.body.password;
-  var sql =
-    'INSERT INTO fintech.employee (enterpriseCode, name, ID, PW, balance) VALUES (?, ?, ?, ?,0)';
-  connection.query(sql, [entCode, name, ID, PW], function(
-    error,
-    results,
-    fields
-  ) {
+
+  if(ID=='' || PW==''){
+    console.log("또잉");
+    res.json(2);
+  }
+  else {
+  var sql = "SELECT * FROM fintech.employee WHERE ID = ?";
+  connection.query(sql, [ID], function (error, results, fields) {
+    
     if (error) throw error;
-    console.log('The result is: ', results);
-    console.log('sql is ', this.sql);
-    res.json(1);
+    
+    if(results[0] != null ){   
+      
+      console.log(ID+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+      res.json(0);
+
+    }else{
+
+        var sql =
+          'INSERT INTO fintech.employee (enterpriseCode, name, ID, PW, balance) VALUES (?, ?, ?, ?,0)';
+        connection.query(sql, [entCode, name, ID, PW], function(
+          error,
+          results,
+          fields
+        ) {
+          if (error) throw error;
+          console.log('The result is: ', results);
+          console.log('sql is ', this.sql);
+          res.json(1);
   });
+} 
+
 });
+
+}
+})
+  
 
 router.post('/empLogin', function(req, res) {
   var entCode = req.body.entCode;
@@ -72,7 +96,7 @@ router.post('/empLogin', function(req, res) {
       console.log('비밀번호 틀렸습니다.');
       res.json(0);
     }
-  });
-});
+  })
+})
 
 module.exports = router;
