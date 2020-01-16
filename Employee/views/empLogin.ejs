@@ -71,7 +71,7 @@
 					</div>
 
 					<div class="form-row txt-center mt-15">
-						Don't you have an account yet? <a href="empSignup" data-loader="show">Sign Up</a>
+						Welcome Pay's book! <a href="empSignup" data-loader="show">Sign Up</a>
 					</div>
 
 				</div>
@@ -112,6 +112,7 @@
                 },
 
                 success:function(data){
+					console.log(data);
                     if(data == 0){
                        alert("wrong password");
                     }

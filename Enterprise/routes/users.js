@@ -40,7 +40,10 @@ router.post('/user', function(req, res){ //회사 회원가입 API
   var ID = req.body.ID;
   var PW = req.body.password;  
   var CODE = Math.floor(Math.random()*100)+1;
-
+  if(ID=='' || PW==''){
+    res.json(2);
+  }
+  else {
   var sql = "SELECT * FROM fintech.enterprise WHERE enterpriseID = ?";
   connection.query(sql, [ID], function (error, results, fields) {
     
@@ -68,7 +71,7 @@ router.post('/user', function(req, res){ //회사 회원가입 API
   
     });
 
-
+  }
 })
 
 router.post('/login', function(req, res){ //회사 로그인 API
