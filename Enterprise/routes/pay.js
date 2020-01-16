@@ -18,9 +18,6 @@ var connection = mysql.createConnection({
 
 connection.connect;
 
-
-
-
 // 출금이체 API
 router.post('/withdrawQr', auth, function(req, res) {
 

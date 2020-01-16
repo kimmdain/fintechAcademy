@@ -37,17 +37,38 @@ router.get('/enterMain', function(req, res){
 //-----------post------------//
 router.post('/user', function(req, res){ //회사 회원가입 API
   console.log(req.body);
- // var entCode = req.body.entCode;
   var ID = req.body.ID;
   var PW = req.body.password;  
   var CODE = Math.floor(Math.random()*100)+1;
-  var sql = "INSERT INTO fintech.enterprise (enterpriseCode, enterpriseID, enterprisePW) VALUES (?, ?, ?)";
-  connection.query(sql, [CODE, ID, PW], function (error, results, fields) {
+
+  var sql = "SELECT * FROM fintech.enterprise WHERE enterpriseID = ?";
+  connection.query(sql, [ID], function (error, results, fields) {
+    
+    if (error) throw error;
+    
+    if(results[0] != null ){   
+      
+      console.log(ID+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+      res.json(0);
+
+    }else{
+      
+          var sql = "INSERT INTO fintech.enterprise (enterpriseCode, enterpriseID, enterprisePW) VALUES (?, ?, ?)";
+          connection.query(sql, [CODE, ID, PW], function (error, results, fields) {
+          if (error) throw error;
+          console.log('The result is: ', results);
+          console.log('sql is ', this.sql);
+          res.json(1);
+      });
+
+    }
+
+
       if (error) throw error;
-      console.log('The result is: ', results);
-      console.log('sql is ', this.sql);
-      res.json(1);
-  });
+  
+    });
+
+
 })
 
 router.post('/login', function(req, res){ //회사 로그인 API

@@ -298,22 +298,20 @@
 					$('.entercode').css("color","white");
 
 					var buttonHtml = ""
-					
+					var buttonHtml2 = ""
+
                     $("#cardList").empty()
 
                       for(var i = 0; i < data.length; i++){
 
-                        
                         if(data[i].approved == 0){
                             console.log(data[i])
-                           // buttonHtml = '<button type="button" id="menu"'+i+' onclick="oneclick("'+i+','+data[i].ID+'")>승인버튼</button>'
-                           buttonHtml = '<button type="button" id="menu"'+' onclick="oneclick(\''+data[i].ID+'\')">승인버튼</button>'
-                            
-                        
-                        }
+							buttonHtml = '<button type="button" id="menu"'+' onclick="oneclick(\''+data[i].ID+'\')">승인버튼</button>'
+						}
                         else {
-                            buttonHtml = ""
-                        }
+							buttonHtml = ''
+						}
+						
                         $("#cardList").append(
                             '<div class="balance-card mb-15">'+
                                 '<div class="d-flex align-items-center">'+
@@ -325,7 +323,7 @@
                                         '</div>'+
                             		    '<div class="ml-auto align-self-end">'+
 											buttonHtml+
-                                        '</div>'+
+										'</div>'+
                                     '</div>'+
                                 '</div>'+
             	            '</div>'
@@ -335,7 +333,7 @@
             })
 		}
 
-		function oneclick(p){
+		function oneclick(p, isapprove){
 
             console.log(p)
             var jwtToken = sessionStorage.getItem('jwtToken');
@@ -348,9 +346,11 @@
                  headers : {
                         'x-access-token' : jwtToken
                 },data : {
-                    
-                    ID : p
-                },
+
+					ID : p,
+					approve : isapprove
+			   
+				},
                 success:function(data){
                     alert("승인완료")
                     fetchUserData()
