@@ -24,61 +24,23 @@ router.get('/enterTransaction', function(req, res){
 })
 
 
-// router.post('/enterTransaction', auth, function(req, res){   //회사 거래내역조회 
-//     var userData = req.decoded  ;
-//     var finusenum = req.body.fin_use_num;
-
-//     var sql = "SELECT * FROM user WHERE id = ?"
-//     connection.query(sql, [userData.userId], function(err, result){
-//         if(err){
-//             console.error(err);
-//             throw err;
-//         }else {
-         
-//           console.log(result);
-//             var random = Math.floor(Math.random() * 1000000000) + 1;    
-//             var ranId = "T991604370U" + random;
-//             var options = {
-//                 method: 'GET',
-//                 url: 'https://testapi.openbanking.or.kr/v2.0/account/transaction_list/fin_num',
-//                 headers: {
-//                   Authorization: 'Bearer ' + result[0].accesstoken
-//                 },
-//                 qs : {
-//                     bank_tran_id : ranId,
-//                     fintech_use_num : finusenum,
-//                     inquiry_type :'A',
-//                     inquiry_base:'D',
-//                     from_date : '20190101',
-//                     to_date : '20190110',
-//                     sort_order :'D',
-//                     tran_dtime : '20200110102959'
-//                 }
-//               }
-//               request(options, function (error, response, body) { 
-//                 console.log(body);
-//                 var parseData = JSON.parse(body);
-//                 res.json(parseData);
-//               })
-              
-//         }
-// })
-// })
-
-
-router.post('/enterTransaction', auth, function(req, res){   //회사에서 거래내역조회 
-  var userData = req.decoded  ;
+router.post('/enterTransaction', auth, function(req, res){   //회사 거래내역조회 
+  var userData = req.decoded;
   var finusenum = req.body.fin_use_num;
 
-  var sql = "SELECT * FROM transcation WHERE id = ?"
-  connection.query(sql, [userData.enterpriseID], function(err, result){
+  console.log(userData)
+
+  var sql = "SELECT * FROM transaction WHERE enterpriseID = ?"
+  connection.query(sql, [userData.userCode], function(err, result){
       if(err){
           console.error(err);
           throw err;
       }else {
-        console.log('The result is: ', results);
-        console.log('sql is ', this.sql);
-        res.json(results);     
+       
+        console.log(result);
+        
+        res.json(result);
+            
       }
 })
 })
