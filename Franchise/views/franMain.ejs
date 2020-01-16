@@ -223,10 +223,13 @@
 						</div>
 					</div>
 				</div>
+				
 				<section class="bal-section container" id="cardList"></section>
-				<button type='button' id='payment'>결제하기</button>
-				<button type='button' id='transaction' style='float:right'>거래 내역 조회</button>
-				<button type='button' id='menu' style='float:right'>메뉴 수정</button>                
+				<button type='button' id='menu'>메뉴 수정</button>
+				<button type='button' id='transaction'>거래 내역 조회</button>
+				<button type='button' id='payment' style='float:right' onclick="gotoQrReader()">결제하기</button>
+				<input type='text' id='chosenMenu' style='float:right' value='선택한 메뉴 및 개수'></input>
+
 				<footer>
 					<div class="container">
 						<ul>
@@ -296,7 +299,7 @@
 					console.log("data 받아옴")
 					console.log(data[0].menu);
 					for(var i = 0; i < data.length; i++){
-						cartSession[i] = { "menu" : data[i].menu, "click" : 0 };
+						cartSession[i] = { "menu" : data[i].menu, "price" : data[i].price, "click" : 0 };
 						console.log(cartSession);
 					}
 					sessionStorage.setItem('cartSession', cartSession);
@@ -325,13 +328,17 @@
 
 		function plusCart(p){
 			cartSession[p].click++;
-			console.log(cartSession);
+			console.log(cartSession);			
 		}
 
 		function minusCart(p){
 			cartSession[p].click--;
 			if(cartSession[p].click < 0) cartSession[p].click = 0;
 			console.log(cartSession);
+		}
+
+		function gotoQrReader(){
+			location.href = "/qr/franQrReader";
 		}
 
     </script>

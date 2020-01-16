@@ -148,6 +148,14 @@
     <script type="text/javascript" src="/js/instascan.min.js"></script>
 
 	<script>
+		var chosenMenu = sessionStorage.getItem('cartSession')
+		console.log(chosenMenu);
+		var priceSum = 0;
+		for(var i = 0; i < chosenMenu.length; i++){
+			priceSum += chosenMenu[i].price * chosenMenu[i].click;
+		}
+		console.log(priceSum);
+		
 	 let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
       scanner.addListener('scan', function (content) {
         // 이벤트 발생 부분
@@ -163,6 +171,7 @@
 
 		var jwtToken = sessionStorage.getItem('jwtToken')
 		//console.log(content);
+		
 		
         $.ajax({
 		url:'http://localhost:3000/qr/withdrawQr',
