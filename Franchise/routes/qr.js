@@ -22,7 +22,7 @@ router.get('/franQrReader', function(req, res) {
 router.post('/saveTrans', auth, function(req, res){
 
   // 토큰에서 갖고 오는 정보들
-  var franId = req.decoded.franId; // 가맹점 ID
+  var franId = req.decoded.userId; // 가맹점 ID
   // body에서 갖고 오는 정보들
   var employID = req.body.employID; // 직원 ID
   var enterpriseCode = req.body.enterpriseCode; // 회사 코드
@@ -34,6 +34,9 @@ router.post('/saveTrans', auth, function(req, res){
     console.log(results);
     if (error) throw error;
     res.json(1);
+  
+  
+  
   });
 })
 
