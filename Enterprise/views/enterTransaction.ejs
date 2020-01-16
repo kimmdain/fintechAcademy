@@ -302,7 +302,7 @@
 		
 
 	
-			$('.entercode').text("회사ID : " + data[0].enterpriseID);
+			$('.entercode').text("회사ID : " + data[0].enterpriseCode);
 			$('.entercode').css("color","white");
 
 	console.log("data 받아옴")
@@ -317,8 +317,8 @@
 				'<div class="d-flex align-items-center">'+
 					'<div class="d-flex flex-grow">'+
 						'<div class="mr-auto">' +
-							'<p class="g-text mb-10">'+"이름: "+data[i].employID+'</h1>'+
-							'<p class="g-text mb-10">'+"회사코드: "+data[i].franID+'</h1>'+
+							'<p class="g-text mb-10">'+"이름: "+data[i].emp_name+'</h1>'+
+							'<p class="g-text mb-10">'+"가맹점 이름: "+data[i].fran_name+'</h1>'+
 							'<p class="g-text mb-10">'+"메뉴: "+data[i].menu+'</p>'+
 							'<p class="g-text mb-10">'+"가격: "+data[i].price+'</p>'+
 						'</div>'+
@@ -329,6 +329,86 @@
 			}    
 		}
 	})
+
+
+	function oneclick(p){
+
+		console.log(p)
+		//var jwtToken = sessionStorage.getItem('jwtToken');
+		
+        $.ajax({
+			url:'http://localhost:3000/pay/withdrawQr',
+			type : 'POST',
+			headers : {
+				'x-access-token' : jwtToken     // 필요한가?
+			},
+			data : {
+
+			},
+			success: function (data) {
+                console.log(data);
+                if(data == 1){
+					alert('출금이 완료!');
+					{
+						$.ajax({
+							url:'http://localhost:3000/pay/depositQr',
+							type : 'POST',
+							headers : {
+								'x-access-token' : jwtToken     // 필요한가?
+							},
+							data : {
+
+							},
+							success: function (data) {
+								console.log(data);
+								if(data == 1){
+									alert('결제가 완료되었습니다.');
+									//ispay 0->ispay 1 API 구현
+									$.ajax({
+										url:'http://localhost:3000/pay/isPay1',
+										type : 'POST',
+										headers : {
+											'x-access-token' : jwtToken
+										},
+										success:function(datas){
+											console.log(datas);
+											for(var i=0; i<datas.length; i++){
+												$.ajax({
+													url:'http://localhost:3000/pay/isPay2',
+													type : 'POST',
+													headers : {
+														'x-access-token' : jwtToken
+													},
+													data :{
+														id : datas[i]
+													},
+													success:function(data){
+														alert('결제내역이 승인되었습니다.');											
+													}
+
+												})
+
+											}
+
+										}
+									})
+								}
+								else {
+									alert('결제가 미승인되었습니다')
+									}
+							}
+						})
+					}
+                }
+                else {
+                    alert('출금이 실패했습니다')
+                }
+            }
+		})
+
+
+		}
+
 
 	</script>
 </body>

@@ -10,7 +10,7 @@ var balanceRouter = require('./routes/balance');
 var transactionRouter = require('./routes/transaction');
 var approveRouter = require('./routes/approve');
 var codeRouter = require('./routes/code');
-
+var payRouter = require('./routes/pay');
 
 var app = express();
 
@@ -30,7 +30,7 @@ app.use('/balance', balanceRouter);
 app.use('/transaction', transactionRouter)
 app.use('/approve', approveRouter);
 app.use('/code', codeRouter);
-
+app.use('/pay', payRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
