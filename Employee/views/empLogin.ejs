@@ -114,8 +114,11 @@
                 success:function(data){
 					console.log(data);
                     if(data == 0){
-                       alert("wrong password");
-                    }
+                       alert("비밀번호 틀렸습니다");
+					}
+					else if(data == 1){
+						alert("미승인 계좌입니다")
+					}
                     else{
                         window.location = '/empQrcode?entCode=' + data[0].enterpriseCode + '&ID=' + data[0].ID + '&name=' + data[0].name + '&balance=' + data[0].balance;
                     }
