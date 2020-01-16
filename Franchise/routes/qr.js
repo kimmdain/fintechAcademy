@@ -18,6 +18,25 @@ router.get('/franQrReader', function(req, res) {
   res.render('franQrReader');
 });
 
+// 거래내역 DB 저장 API
+router.post('/saveTrans', auth, function(req, res){
+
+  // 토큰에서 갖고 오는 정보들
+  var franId = req.decoded.franId; // 가맹점 ID
+  // body에서 갖고 오는 정보들
+  var employID = req.body.employID; // 직원 ID
+  var enterpriseCode = req.body.enterpriseCode; // 회사 코드
+  var menu = req.body.menu; // 메뉴 이름
+  var price = req.body.price; // 메뉴 
+  var date = req.body.date;
+  console.log(date);
+  connection.query('INSERT INTO transaction (enterpriseCode, franID, employID, menu, price, timestamp, isPay) VALUES (?, ?, ?, ?, ?, ?, ?)', [enterpriseCode, franId, employID, menu, price, date, 0], function(error, results, fields) {
+    console.log(results);
+    if (error) throw error;
+    res.json(1);
+  });
+})
+
 // 출금이체 API
 router.post('/withdrawQr', auth, function(req, res) {
   var finusenum = req.body.fin_use_num;

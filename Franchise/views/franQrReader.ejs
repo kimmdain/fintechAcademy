@@ -148,59 +148,109 @@
     <script type="text/javascript" src="/js/instascan.min.js"></script>
 
 	<script>
-		var chosenMenu = sessionStorage.getItem('cartSession')
+		function getTimeStamp() {
+			var d = new Date();
+			var s =
+				leadingZeros(d.getFullYear(), 4) + '-' +
+				leadingZeros(d.getMonth() + 1, 2) + '-' +
+				leadingZeros(d.getDate(), 2) + ' ' +
+
+				leadingZeros(d.getHours(), 2) + ':' +
+				leadingZeros(d.getMinutes(), 2) + ':' +
+				leadingZeros(d.getSeconds(), 2);
+
+			return s;
+		}
+
+		function leadingZeros(n, digits) {
+			var zero = '';
+			n = n.toString();
+
+			if (n.length < digits) {
+				for (i = 0; i < digits - n.length; i++)
+				zero += '0';
+			}
+			return zero + n;
+		}
+
+		var chosenMenuStr = sessionStorage.getItem('cartSession')
+		console.log(chosenMenuStr);
+		chosenMenu = JSON.parse(chosenMenuStr);
 		console.log(chosenMenu);
 		var priceSum = 0;
 		for(var i = 0; i < chosenMenu.length; i++){
 			priceSum += chosenMenu[i].price * chosenMenu[i].click;
 		}
 		console.log(priceSum);
-		
-	 let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
-      scanner.addListener('scan', function (content) {
-        // 이벤트 발생 부분
-        console.log("hihi " + content); // content 는 fin_use_num임
-		var qs = content;
-		var fun = '199160569057881529753629'; // 핀테크 유즈넘버 일단 임의로 테스트용
-		
-		// jd, 111 이런 방식으로 나옴
-		var jbString = content;
-		var jbSplit = jbString.split(',');
-		// jbSplit[0] = 가맹점이름
-		// jbSplit[1] = 가맹점코드
 
-		var jwtToken = sessionStorage.getItem('jwtToken')
-		//console.log(content);
+		//var date = new Date();
 		
-		
-        $.ajax({
-		url:'http://localhost:3000/qr/withdrawQr',
-		type : 'POST',
-		headers : {
-			'x-access-token' : jwtToken     // 필요한가?
-		},
-		data : {
-			fin_use_num : fun,
-			name : jbSplit[0],
-			enterpriseCode : jbSplit[1]
-		},
-		success:function(data){
-            console.log(data);
-            sessionStorage.setItem('jwtToken', data);
-            
-			$("#transComplete").text(data); // balance_amt 바꾸자.
-		}
-	})
-      });
-      Instascan.Camera.getCameras().then(function (cameras) {
-        if (cameras.length > 0) {
-          scanner.start(cameras[0]);
-        } else {
-          console.error('No cameras found.');
-        }
-      }).catch(function (e) {
-        console.error(e);
-      });
+
+	 	let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+      	scanner.addListener('scan', function (content) {
+			// 이벤트 발생 부분
+			console.log(content);	// content 는 employeeID, enterpriseCode 임
+									// jd, 111 이런 방식으로 나옴
+			var jbString = content;
+			var jbSplit = jbString.split(',');
+			// jbSplit[0] = 직원 ID (employeeID)
+			// jbSplit[1] = 회사 코드 (enterpriseCode)
+
+
+			var jwtToken = sessionStorage.getItem('jwtToken')
+			//console.log(content);
+			
+			// 거래내역을 거래내역DB에 저장
+			for(var i = 0; i < chosenMenu.length; i++){
+				$.ajax({
+				url:'http://localhost:3000/qr/saveTrans',
+				type : 'POST',
+				headers : {
+					'x-access-token' : jwtToken     // 필요한가?
+				},
+				data : {
+					enterpriseCode : jbSplit[1],
+					employID : jbSplit[0],
+					menu : chosenMenu[i].menu,
+					price : chosenMenu[i].price,
+					date : getTimeStamp()
+				},
+				success:function(data){
+					console.log(data);
+					
+				}
+				})
+			}
+			alert("총 " + priceSum + "원 결제 완료");
+			location.href = "/franMain";
+
+			// $.ajax({
+			// url:'http://localhost:3000/qr/withdrawQr',
+			// type : 'POST',
+			// headers : {
+			// 	'x-access-token' : jwtToken     // 필요한가?
+			// },
+			// data : {
+			// 	fin_use_num : fun,
+			// 	name : jbSplit[0],
+			// 	enterpriseCode : jbSplit[1]
+			// },
+			// success:function(data){
+			//     console.log(data);
+			//     sessionStorage.setItem('jwtToken', data);
+				
+			// 	$("#transComplete").text(data); // balance_amt 바꾸자.
+			// }
+		});
+     	Instascan.Camera.getCameras().then(function (cameras) {
+			if (cameras.length > 0) {
+				scanner.start(cameras[0]);
+			} else {
+				console.error('No cameras found.');
+			}
+		}).catch(function (e) {
+			console.error(e);
+    	});
 	</script>
 	
 </body>
