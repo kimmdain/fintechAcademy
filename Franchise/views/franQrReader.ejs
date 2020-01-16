@@ -212,7 +212,7 @@
 					enterpriseCode : jbSplit[1],
 					employID : jbSplit[0],
 					menu : chosenMenu[i].menu,
-					price : chosenMenu[i].price,
+					price : chosenMenu[i].price * chosenMenu[i].click,
 					date : getTimeStamp()
 				},
 				success:function(data){
