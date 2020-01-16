@@ -104,21 +104,20 @@
                     name : name,
                     ID : ID,
                     password : password                    
-                },
-
+				},
                 // data 값에 server.js의 app.post('/user', function(req, res)의
                 // response로 json 형태로 넘어온 1 값이 저장됨
                 success:function(data){
                     if(data == 1){
                        alert("가입 완료");
                        window.location = "/users/login"
-                    }
+                    }else if(data == 0){
+						alert("아이디 중복");
+					}
                 }
             })
         })
     </script>
-
-	
 </body>
 
 </html>

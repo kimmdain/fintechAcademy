@@ -36,9 +36,7 @@ router.post('/enterTransaction', auth, function(req, res){   //회사 거래내�
           console.error(err);
           throw err;
       }else {
-       
         console.log(result);
-        
         res.json(result);
             
       }

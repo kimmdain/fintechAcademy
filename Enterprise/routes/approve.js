@@ -19,8 +19,7 @@ connection.connect;
 
 router.get('/enterApprove', function(req, res){
     res.render('enterApprove');
-  })
-
+})
 
 router.post('/enterEmplist', auth, function(req, res){
 
@@ -29,23 +28,17 @@ router.post('/enterEmplist', auth, function(req, res){
     var sql ="SELECT * FROM employee WHERE enterpriseCode = ?"
 
     connection.query(sql, [enterData.userCode], function (error, results, fields) {
-        
         if (error) {
             console.error(err);
             throw error;
         }else {
-          
             console.log('The result is: ', results);
             console.log('sql is ', this.sql);
-
             res.json(results);
-            console.log(results)
         }
     }) 
 })
 
-
-//UPDATE [테이블] SET [열] = '변경할값' WHERE [조건]
 
 router.post('/enterApprove', auth, function(req, res){
 

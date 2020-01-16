@@ -102,7 +102,6 @@ router.post('/franMenuUpdate', function(req, res) {
   connection.query(sql, [userID], function(error, results, fields) {
     if (error) throw error;
     console.log(results[0].franPw, userPassword);
-
     console.log(results);
     res.json(results);
   });
