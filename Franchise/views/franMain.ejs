@@ -229,7 +229,9 @@
 				<button type='button' id='transaction' onclick="gotoTransaction()">거래 내역 조회</button>
 				<button type='button' id='payment' style='float:right' onclick="gotoQrReader()">결제하기</button>
 				<div type='text' id='chosenMenu' style='float:right' value=''></div>
-
+				<div class="form-divider"></div>
+				<div class="form-divider"></div>
+				<div class="form-divider"></div>
 				<footer>
 					<div class="container">
 						<ul>
@@ -305,7 +307,8 @@
 					}
 					console.log(cartSession);
 
-                    for(var i = 0; i < data.length; i++){
+					if(data[0].menu != null){
+						for(var i = 0; i < data.length; i++){
                         $("#cardList").append(
                             '<div class="balance-card mb-15">'+
                                 '<div class="d-flex align-items-center">'+
@@ -325,7 +328,8 @@
 					} 
 					console.log(JSON.stringify(cartSession));
 					
-					sessionStorage.setItem('cartSession', JSON.stringify(cartSession));   
+					sessionStorage.setItem('cartSession', JSON.stringify(cartSession));
+					}
                 }
             })
 		}
