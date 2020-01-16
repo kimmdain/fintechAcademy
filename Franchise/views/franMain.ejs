@@ -310,11 +310,9 @@
                                             '<h1 class="b-val">'+data[i].menu+'</h1>'+
                                         	'<p class="g-text mb-10">'+data[i].price+'</p>'+
                                         '</div>'+
-                            		    '<div class="ml-auto align-self-end">'+
-											'<button type="button" id="menu"'+i+' onclick="oneclick('+i+')">장바구니 담기</button>'+
-											
-											//'<a href = "/franCart/'+ i +'">장바구니 담기</a>'+
-                                            //'<a href="/qrcode?fin_use_num='+data.res_list[i].fintech_use_num+'">QR생성</a>'+
+										'<div class="ml-auto align-self-end">'+
+											'<button type="button" id="menu"'+i+' onclick="minusCart('+i+')">장바구니에서 빼기</button>'+
+											'<button type="button" id="menu"'+i+' onclick="plusCart('+i+')">장바구니 담기</button>'+											
                                         '</div>'+
                                     '</div>'+
                                 '</div>'+
@@ -325,8 +323,14 @@
             })
 		}
 
-		function oneclick(p){
+		function plusCart(p){
 			cartSession[p].click++;
+			console.log(cartSession);
+		}
+
+		function minusCart(p){
+			cartSession[p].click--;
+			if(cartSession[p].click < 0) cartSession[p].click = 0;
 			console.log(cartSession);
 		}
 
