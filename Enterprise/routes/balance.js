@@ -35,7 +35,7 @@
       console.log(userData.userId+"############################################")
       console.log(userData.userCode+"############################################")
 
-      var sql ="SELECT accessToken, finUsenum FROM fintech"
+      var sql ="SELECT accessToken1, finUsenum FROM fintech"
 
       connection.query(sql, function(err, result, fields){
           if(err){
@@ -50,7 +50,7 @@
                   url: 'https://testapi.openbanking.or.kr/v2.0/account/balance/fin_num',
                   
                   headers: {
-                    'Authorization': 'Bearer ' + result[0].accessToken
+                    'Authorization': 'Bearer ' + result[0].accessToken1
                   },
                   qs : {
                       

@@ -24,8 +24,7 @@ connection.connect;
 // 출금이체 API
 router.post('/withdrawQr', auth, function(req, res) {
     var finusenum = req.body.fin_use_num;
-    var franId = req.decoded.userId;
-  
+    //var franId = req.decoded.userId;
     var name = req.body.name; //가맹점이름
     var enterpriseCode = req.body.enterpriseCode; //가맹점코드
   
@@ -33,7 +32,7 @@ router.post('/withdrawQr', auth, function(req, res) {
     console.log(enterpriseCode);
   
     var countnum = Math.floor(Math.random() * 1000000000) + 1;
-    var transId = 'T991605690U' + countnum;
+    var transId = 'T991605830U' + countnum; //본인 이용기관 코드 넣어야 함!
     connection.query('SELECT * FROM fintech WHERE companyId = ?', [name], function(
       error,
       results,
@@ -45,7 +44,7 @@ router.post('/withdrawQr', auth, function(req, res) {
         method: 'post',
         url: 'https://testapi.openbanking.or.kr/v2.0/transfer/withdraw/fin_num',
         headers: {
-          Authorization: 'Bearer ' + results[0].accessToken
+          Authorization: 'Bearer ' + results[0].accessToken1 //fintech 테이블의 3-leg 토큰
         },
         json: {
           bank_tran_id: transId,
@@ -83,37 +82,43 @@ router.post('/withdrawQr', auth, function(req, res) {
   
   // 입금이체 API
   router.post('/depositQr', auth, function(req, res) {
-    var userData = req.decoded;
+
     var finusenum = req.body.fin_use_num;
-    var sql = 'SELECT * FROM user WHERE id = ?';
-    connection.query(sql, [userData.userId], function(err, result) {
+    var name = req.body.name; //가맹점이름
+    var enterpriseCode = req.body.enterpriseCode; //가맹점코드
+  
+    console.log(name);
+    console.log(enterpriseCode);
+
+    var sql = 'SELECT * FROM fintech WHERE id = ?';
+    connection.query(sql, [name], function(err, result) {  //가맹점 이름이 fintech테이블의 companyId부분
       if (err) {
         console.error(err);
         throw err;
       } else {
         console.log(result);
         var random = Math.floor(Math.random() * 1000000000) + 1;
-        var ranId = 'T991605830U' + random;
+        var ranId = 'T991605830U' + random; //본인 이용기관 코드 넣어야 함!
         var options = {
           method: 'POST',
           url: 'https://testapi.openbanking.or.kr/v2.0/transfer/deposit/fin_num',
           headers: {
-            Authorization: 'Bearer ' + result[1].accesstoken,
+            Authorization: 'Bearer ' + result[0].accesstoken2, //fintech 테이블의 2-leg 토큰
             'Content-Type': 'application/json; charset=UTF-8'
           },
           json: {
             cntr_account_type: 'N',
             cntr_account_num: '0460562799',
             wd_pass_phrase: 'NONE',
-            wd_print_content: '이용료(홍길동)',
+            wd_print_content: '식비',
             name_check_option: 'on',
             tran_dtime: '20200110102959',
             req_cnt: '1',
-            req_list: [
+            req_list: [ // 가맹점 1곳이라고 가정. 여러 곳일 때도 가능하게 확장 예정
               {
                 tran_no: '1',
                 bank_tran_id: ranId,
-                fintech_use_num: '199160583057881543899606',
+                fintech_use_num: finusenum ,
                 print_content: '오픈서비스캐시백',
                 tran_amt: '500',
                 req_client_name: '김정남',

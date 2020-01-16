@@ -64,7 +64,7 @@ router.post('/login', function(req, res){ //회사 로그인 API
               {
                   userId : results[0].enterpriseID,
                   userPW : results[0].enterprisePW,
-       //           userCode : results[0].enterpriseCode
+                  userCode : results[0].enterpriseCode
               },
               tokenKey,
               {
