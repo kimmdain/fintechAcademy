@@ -29,15 +29,34 @@ router.post('/saveTrans', auth, function(req, res){
   var menu = req.body.menu; // 메뉴 이름
   var price = req.body.price; // 메뉴 
   var date = req.body.date;
-  console.log(date);
+  var balanceAfter = 0;
+
   connection.query('INSERT INTO transaction (enterpriseCode, franID, employID, menu, price, timestamp, isPay) VALUES (?, ?, ?, ?, ?, ?, ?)', [enterpriseCode, franId, employID, menu, price, date, 0], function(error, results, fields) {
     console.log(results);
     if (error) throw error;
-    res.json(1);
-  
-  
-  
-  });
+  })
+})
+
+// QR코드 찍으면 총 계산액을 employee DB의 balance에 플러스
+router.post('/saveEmpBalance', auth, function(req, res){
+
+  // body에서 갖고 오는 정보들
+  var employID = req.body.employID; // 직원 ID
+  var priceSum = req.body.priceSum; // 총 계산액
+  var balanceAfter = 0;
+  console.log("프라이스썸 = " + priceSum);
+
+  connection.query('SELECT balance FROM employee WHERE ID=?;', [employID], function(error, results, fields){
+    console.log(results);
+    if (error) throw error;
+    balanceAfter = Number(results[0].balance) + Number(priceSum);
+    console.log(balanceAfter);
+    connection.query('UPDATE employee SET balance=? WHERE ID=?;', [Number(balanceAfter), employID], function(error, results, fields){
+      console.log(results);
+      if (error) throw error;
+      //res.json(1);
+    })
+  })
 })
 
 // 출금이체 API

@@ -221,6 +221,22 @@
 				}
 				})
 			}
+
+			$.ajax({
+				url:'http://localhost:3000/qr/saveEmpBalance',
+				type : 'POST',
+				headers : {
+					'x-access-token' : jwtToken     // 필요한가?
+				},
+				data : {					
+					employID : jbSplit[0],
+					priceSum : priceSum
+				},
+				success:function(data){
+					console.log(data);					
+				}
+			})
+
 			alert("총 " + priceSum + "원 결제 완료");
 			location.href = "/franMain";
 
