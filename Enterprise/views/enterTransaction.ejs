@@ -217,7 +217,12 @@
 
 				<div class="dash-balance">
 					<div class="dash-content relative">
-						<h2 class="entercode">Dashboard</h2>
+						<h2 id="aaaaa" class="entercode">거래내역 조회</h2>
+						<style>
+							#aaaaa {
+								color : whitesmoke
+							}
+						</style>
 						<div class="notification">
 							<a href=""><i class="fa fa-plus"></i></a>
 						</div>
@@ -225,21 +230,16 @@
 				</div>
 				<section class="bal-section container" id="cardList"></section>
 				<div class="form-divider"></div>
-            <div class="form-divider"></div>
-            <div class="form-divider"></div>
-            <div class="form-divider"></div>
-            <div class="form-divider"></div>
-            <div class="form-divider"></div>
+			<div class="form-divider"></div>
+			<div class="form-divider"></div>
 				<div class="ml-auto align-self-end">
-					<button type="button" id="menu" onclick="oneclick('+i+')">결제하기</button>
+					
 				</div>
 				<footer>
 					<div class="container">
 						<ul>
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-google"></i></a></li>
-							<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+							<li><button type="button" class="button circle block red" id="menu" onclick="oneclick('+i+')">결제하기</button></i></li>
+							
 						</ul>
 						<p>Copyright © All Right Reserved</p>
 					</div>
