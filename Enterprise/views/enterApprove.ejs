@@ -217,7 +217,7 @@
 
 				<div class="dash-balance">
 					<div class="dash-content relative">
-						<h3 class="w-text">Dashboard</h3>
+						<h2 class="entercode">Dashboard</h2>
 						<div class="notification">
 							<a href=""><i class="fa fa-plus"></i></a>
 						</div>
@@ -292,10 +292,13 @@
                 },
                 success:function(data){
 					
-					console.log("data 받아옴")
 
-                    var buttonHtml = ""
 
+					$('.entercode').text("회사ID : " + data[0].enterpriseCode);
+					$('.entercode').css("color","white");
+
+					var buttonHtml = ""
+					
                     $("#cardList").empty()
 
                       for(var i = 0; i < data.length; i++){
