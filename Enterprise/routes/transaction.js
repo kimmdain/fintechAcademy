@@ -27,9 +27,9 @@ router.post('/enterTransaction', auth, function(req, res) {
   //회사 거래내역조회
   var userData = req.decoded;
   var finusenum = req.body.fin_use_num;
-
+  console.log("ㅡㅡ");
   console.log(userData);
-
+ 
   var sql =
     'SELECT distinct employee.name emp_name,franchise.name fran_name,transaction.enterpriseCode, transaction.menu, transaction.price FROM transaction,franchise,employee WHERE transaction.enterpriseCode = ? and transaction.franID=franchise.franId and transaction.employID=employee.ID and transaction.isPay=0';
   connection.query(sql, [userData.userCode], function(err, result) {

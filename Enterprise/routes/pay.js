@@ -20,10 +20,11 @@ connection.connect;
 
 // 출금이체 API
 router.post('/withdrawQr', auth, function(req, res) {
-
+    var enterData = req.decoded;
     var countnum = Math.floor(Math.random() * 1000000000) + 1;
     var transId = 'T991605830U' + countnum; //본인 이용기관 코드 넣어야 함!
-    connection.query('select sum(price) total, accessToken1, finUsenum, accessToken2 from fintech, transaction where isPay=0;',  function(//금액도 보내줘야함
+    var sql = 'select sum(price) total, accessToken1, finUsenum, accessToken2 from fintech, transaction where isPay=0 and transaction.enterpriseCode=?'
+    connection.query(sql, [enterData.userCode], function(//금액도 보내줘야함
       error,
       results,
       fields
@@ -72,9 +73,9 @@ router.post('/withdrawQr', auth, function(req, res) {
   
   // 입금이체 API
   router.post('/depositQr', auth, function(req, res) {
-
-    var sql = 'select sum(price) total, accessToken1, finUsenum, accessToken2 from fintech, transaction where isPay=0;'; //금액 넣어야함
-    connection.query(sql, function(err, result) {  //가맹점 이름이 fintech테이블의 companyId부분
+    var enterData = req.decoded;
+    var sql = 'select sum(price) total, accessToken1, finUsenum, accessToken2 from fintech, transaction where isPay=0 and transaction.enterpriseCode=?'; //금액 넣어야함
+    connection.query(sql, [enterData.userCode], function(err, result) {  //가맹점 이름이 fintech테이블의 companyId부분
       if (err) {
         console.error(err);
         throw err;
