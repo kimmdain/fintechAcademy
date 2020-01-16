@@ -31,22 +31,36 @@ router.get('/franLogin', function(req, res) {
   res.render('franLogin');
 });
 
+
 router.post('/franSignup', function(req, res) {
+
   console.log(req.body);
   var entCode = req.body.franCode;
   var name = req.body.name;
   var ID = req.body.franId;
   var PW = req.body.franPw;
   var CODE = Math.floor(Math.random() * 100) + 1; // 가맹점 코드
-  console.log(CODE);
-  var sql =
-    'INSERT INTO fintech.franchise (franchiseCode, name, franId, franPw) VALUES (?, ?, ?, ?)';
-  connection.query(sql, [CODE, name, ID, PW], function(error, results, fields) {
+
+  var sql = "SELECT * FROM fintech.franchise WHERE franId = ?";
+  connection.query(sql, [ID], function (error, results, fields) {
     if (error) throw error;
-    console.log('The result is: ', results);
-    console.log('sql is ', this.sql);
-    res.json(1);
-  });
+    
+    if(results[0] != null ){   
+      
+      res.json(0);
+
+    }else{
+
+      var sql =
+            'INSERT INTO fintech.franchise (franchiseCode, name, franId, franPw) VALUES (?, ?, ?, ?)';
+            connection.query(sql, [CODE, name, ID, PW], function(error, results, fields) {
+      if (error) throw error;
+         console.log('The result is: ', results);
+         console.log('sql is ', this.sql);
+         res.json(1);
+    });
+    }
+  })
 });
 
 // router.post('/franLogin', function(req, res){

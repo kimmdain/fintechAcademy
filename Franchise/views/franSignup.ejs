@@ -140,6 +140,8 @@
             if (data == 1) {
               alert('가입 완료');
               window.location = '/users/franLogin';
+            }else if(data == 0){
+              alert('아이디 중복')
             }
           }
         });
