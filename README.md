@@ -23,6 +23,9 @@
 - **``` 오픈뱅킹 API ```** 사용으로 잔액조회, 출금이체 및 입금이체 기능 구현 
 - QR 코드 생성 및 QR 리더기 사용
 
+## 실제 사용예시 동영상
+https://drive.google.com/open?id=1pxYBgmw8dqsNjt928Hj_R7UgREif5C-3
+
 ## Run 
 
 #### 가맹점 Run 
