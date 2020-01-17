@@ -27,6 +27,18 @@ https://drive.google.com/open?id=1pxYBgmw8dqsNjt928Hj_R7UgREif5C-3
 - **``` 오픈뱅킹 API ```** 사용으로 잔액조회, 출금이체 및 입금이체 기능 구현 
 - QR 코드 생성 및 QR 리더기 사용
 
+## Stack 
+
+#### frontend 
+  - ejs : 기반구조
+  - ajax : api 통신
+  - css : 디자인 적용  
+
+#### backend 
+  - nodeJS, expressJS : 서버생성
+  - mysql : 데이터베이스 생성
+  - jwt : 인증처리 
+
 ## Run 
 
 #### 가맹점 Run 
