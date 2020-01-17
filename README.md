@@ -8,6 +8,10 @@
 - off-line 거래 시 발생할 수 있는 대부분의 문제를 해결할 수 있는 토탈 솔루션 제공
 - 회사와 음식점 모두 win!win! 할 수 있는 플랫폼 
 
+### example video 
+
+https://drive.google.com/open?id=1pxYBgmw8dqsNjt928Hj_R7UgREif5C-3
+
 ## Structure
 
 #### 플랫폼 전체 흐름 및 구조
@@ -22,9 +26,6 @@
 
 - **``` 오픈뱅킹 API ```** 사용으로 잔액조회, 출금이체 및 입금이체 기능 구현 
 - QR 코드 생성 및 QR 리더기 사용
-
-## 실제 사용예시 동영상
-https://drive.google.com/open?id=1pxYBgmw8dqsNjt928Hj_R7UgREif5C-3
 
 ## Run 
 
