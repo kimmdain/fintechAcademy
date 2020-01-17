@@ -38,6 +38,12 @@ https://drive.google.com/open?id=1pxYBgmw8dqsNjt928Hj_R7UgREif5C-3
   - nodeJS, expressJS : 서버생성
   - mysql : 데이터베이스 생성
   - jwt : 인증처리 
+ 
+#### 개발 환경
+  - 금융결제원 테스트베드 
+  - workbench 
+  - visualCode
+  - Github
 
 ## Run 
 
